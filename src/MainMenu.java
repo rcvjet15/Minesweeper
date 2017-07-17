@@ -5,8 +5,6 @@ import java.awt.event.*;
 
 public class MainMenu extends JDialog {
     private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
     private JButton buttonStart;
     private JButton buttonAbout;
     private JButton buttonSettings;
@@ -18,26 +16,40 @@ public class MainMenu extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(buttonStart);
 
-        buttonCancel.addActionListener(e -> onCancel());
+        buttonStart.addActionListener(e -> onStart());
+        buttonSettings.addActionListener(e -> onSettings());
+        buttonAbout.addActionListener(e -> onAbout());
+        buttonExit.addActionListener(e -> onExit());
 //
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                onCancel();
+                onExit();
             }
         });
 //
         // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onCancel();
+                onExit();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onCancel() {
-        // add your code here if necessary
+    private void onStart(){
+
+    }
+
+    private void onSettings(){
+
+    }
+
+    private void onAbout(){
+
+    }
+
+    private void onExit() {
         dispose();
     }
 }
