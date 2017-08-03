@@ -10,7 +10,7 @@ public class MainMenu extends JDialog {
     private JButton buttonSettings;
     private JLabel labelAppTitle;
     private JButton buttonExit;
-
+    private MainAppFrame _appFrame;
 
     public MainMenu() {
         setContentPane(contentPane);
@@ -36,10 +36,15 @@ public class MainMenu extends JDialog {
                 onExit();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        _appFrame = new MainAppFrame();
     }
 
     private void onStart(){
-        JPanelGrid.createAndShowGui();
+        _appFrame.addComponent(new JPanelGrid());
+        _appFrame.showFrame();
+        this.dispose();
+        _appFrame.setFocusable(true);
     }
 
     private void onSettings(){

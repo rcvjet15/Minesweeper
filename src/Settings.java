@@ -4,12 +4,12 @@ import java.awt.*;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
-    private static int _rows = 9;
-    private static int _columns = 9;
-    private static Color _backgroundColor = Color.black;
+    private static int _rows = 21;
+    private static int _columns = 21;
+    private static Color _mainBgColor = Color.black;
+    private static Color _bgColor = Color.black;
 
-    public Settings()
-    {
+    public Settings() {
 
     }
 
@@ -37,11 +37,19 @@ public class Settings {
         _columns = columns;
     }
 
-    public static Color getBackgroundColor(){
-        return _backgroundColor;
+    public static Color getMainBgColor(){
+        return _mainBgColor;
     }
 
-    public static void setBackgroundColor(Color color){
-        _backgroundColor = color;
+    public static void setMainBgColor(Color color){
+        _mainBgColor = color;
+    }
+
+    public static Color getBgColor(){
+        return _bgColor;
+    }
+
+    public static void setBgColor(Color color){
+        _bgColor = color;
     }
 }
