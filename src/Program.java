@@ -1,3 +1,4 @@
+import javax.swing.*;
 
 public class Program {
 
@@ -11,6 +12,6 @@ public class Program {
 
         StartApp();
 
-        System.exit(0);
+        // JPanelGrid.createAndShowGui();
     }
 }

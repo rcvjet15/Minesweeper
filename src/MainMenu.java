@@ -11,9 +11,10 @@ public class MainMenu extends JDialog {
     private JLabel labelAppTitle;
     private JButton buttonExit;
 
+
     public MainMenu() {
         setContentPane(contentPane);
-        setModal(true);
+        setModal(false);
         getRootPane().setDefaultButton(buttonStart);
 
         buttonStart.addActionListener(e -> onStart());
@@ -38,7 +39,7 @@ public class MainMenu extends JDialog {
     }
 
     private void onStart(){
-
+        JPanelGrid.createAndShowGui();
     }
 
     private void onSettings(){
