@@ -12,7 +12,6 @@ public class JPanelGrid extends JPanel {
     private int _rows;
     private int _columns;
     private Color _backgroundColor;
-    private Dimension _fieldSize = new Dimension(3, 3);
     private Field _field;
 
     public JPanelGrid(){
@@ -27,19 +26,10 @@ public class JPanelGrid extends JPanel {
 
         for (int i = 0; i < _rows; i++){
             for (int j = 0; j < _columns; j++){
-                JPanel panel = new JPanel();
-                panel.setEnabled(true);
-                panel.setBackground(Color.yellow);
-                panel.setPreferredSize(_fieldSize);
-                panel.setBorder(BorderFactory.createLineBorder(Color.black));
-                panel.setLayout(new BorderLayout());
 
-                panel.setName(i + j + " Panel");
-
-                JLabel lbl = _field.createInitialField();
-                panel.add(lbl);
-                panel.addMouseListener(_field);
-                add(panel);
+                JPanel field = _field.createInitialField();
+                add(field);
+                field.setName(i + j + " field");
             }
         }
     }

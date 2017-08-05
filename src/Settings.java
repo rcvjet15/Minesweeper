@@ -4,14 +4,11 @@ import java.awt.*;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
-    private static int _rows = 21;
-    private static int _columns = 21;
+    private static int _rows = 30;
+    private static int _columns = 25;
     private static Color _mainBgColor = Color.black;
     private static Color _bgColor = Color.black;
-
-    public Settings() {
-
-    }
+    private static Color _fieldFontColor = Color.yellow;
 
     public static int getRows() {
         return _rows;
@@ -52,4 +49,8 @@ public class Settings {
     public static void setBgColor(Color color){
         _bgColor = color;
     }
+
+    public static Color getFieldFontColor() { return _fieldFontColor ; }
+
+    public static void setFieldFontColor(Color color) { _fieldFontColor  = color; }
 }

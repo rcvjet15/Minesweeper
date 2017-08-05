@@ -10,15 +10,17 @@ import java.util.ArrayList;
 public class MainAppFrame extends JFrame {
 
     private Color _bgColor = Color.WHITE;
-    private Dimension dSize = new Dimension(300, 300);;
+    private Dimension _dSize;
 
     ArrayList<Component> _frameComponents;
 
-    public MainAppFrame(){
+    public MainAppFrame(Dimension d){
         JFrame frame = new JFrame("JPanelGrid");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(_bgColor);
         _frameComponents = new ArrayList<>();
+        _dSize = d;
+        setResizable(false);
     }
 
     public void addComponent(Component component){
@@ -30,7 +32,8 @@ public class MainAppFrame extends JFrame {
             this.getContentPane().add(c);
         }
 
-        this.pack();
+        // this.pack();
+        this.setSize(_dSize);
         this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);
         this.setVisible(true);

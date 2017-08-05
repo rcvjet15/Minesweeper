@@ -1,6 +1,7 @@
 import javafx.scene.control.Alert;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class MainMenu extends JDialog {
@@ -11,10 +12,15 @@ public class MainMenu extends JDialog {
     private JLabel labelAppTitle;
     private JButton buttonExit;
     private MainAppFrame _appFrame;
+    private Toolkit _toolkit = Toolkit.getDefaultToolkit();
+    private Dimension _screenSize = _toolkit.getScreenSize();
+    private Point _center = new Point(_screenSize.width / 2, _screenSize.height / 2);
+    Dimension _mainAppFrameDimension;
 
     public MainMenu() {
         setContentPane(contentPane);
-        setModal(false);
+        setLocation(_center);
+
         getRootPane().setDefaultButton(buttonStart);
 
         buttonStart.addActionListener(e -> onStart());
@@ -36,14 +42,14 @@ public class MainMenu extends JDialog {
                 onExit();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-
-        _appFrame = new MainAppFrame();
     }
 
     private void onStart(){
+        _mainAppFrameDimension = new Dimension(Settings.getColumns() * 25, Settings.getRows() * 25);
+        _appFrame = new MainAppFrame(_mainAppFrameDimension);
         _appFrame.addComponent(new JPanelGrid());
+        _appFrame.setSize(_mainAppFrameDimension);
         _appFrame.showFrame();
-        this.dispose();
         _appFrame.setFocusable(true);
     }
 
