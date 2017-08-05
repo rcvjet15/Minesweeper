@@ -21,11 +21,11 @@ public class MinefieldBuilder {
 
     private void createMinefield(){
         createMinesPosition();
+        createMinefieldNumbers();
     }
 
     private void createMinesPosition(){
         Random rand = new Random();
-        int min = 1; // Minimum random number
         int max = Settings.getRows() * Settings.getColumns(); // Maximum random number
 
         int r = 0;
@@ -34,7 +34,7 @@ public class MinefieldBuilder {
         for (int i = 0; i < Settings.getMinesCount(); i++){
             do{
                 duplicate = false;
-                r = min + rand.nextInt(max);
+                r = rand.nextInt(max);
 
                 for (int j = 0; j < _minesPosition.size(); j++){
                     if (r == _minesPosition.get(j)){
@@ -42,7 +42,7 @@ public class MinefieldBuilder {
                         break;
                     }
                 }
-            } while (duplicate = false);
+            } while (duplicate == true);
             _minesPosition.add(r);
         }
 
@@ -50,34 +50,48 @@ public class MinefieldBuilder {
     }
 
     private void createMinefieldNumbers(){
-        int fieldNumber = 0;
 
         for (int i = 0; i < _mineField.length; i++){
             for (int j = 0; j < _mineField[i].length; j++){
-
+                _mineField[i][j] = getFieldNumber(i, j);
             }
         }
     }
 
     private int getFieldNumber(int row, int col){
-        int fieldIndex = row * _mineField[0].length - (_mineField[0].length - col);
         int minesCount = 0;
 
         // If current element is found in mines position array then this element is mine
-        if (isMine(fieldIndex)){
+        if (isMine(row, col)){
             return MINE_INDICATOR;
         }
 
-        for (int i = 0; i < _minesPosition.size(); i++){
-            
+        int fieldIndex = row * _mineField[0].length - (_mineField[0].length - col);
+
+        // Get surrounding elements
+        int previousRow = row > 0 ? row - 1 : 0;
+        int nextRow = row < _mineField.length - 1 ? row + 1 : _mineField.length - 1;
+
+        int previousCol = col > 0 ? col - 1 : 0;
+        int nextCol = col < _mineField[0].length - 1 ? col + 1 : _mineField[0].length - 1;
+
+        // Loop through elements that surround current field
+        for (int i = previousRow; i < nextRow; i++){
+            for (int j = previousCol; j < nextCol; j++){
+                if (isMine(i, j)){
+                    minesCount++;
+                }
+            }
         }
+
+        return minesCount;
     }
 
     // Check if field is mine
-    private boolean isMine(int fieldPos){
+    private boolean isMine(int row, int col){
         // Loop through mines position array and return true if mine is on position number 'fieldPos'
         for (int i = 0; i < _minesPosition.size(); i++){
-            if (_minesPosition.get(i) == fieldPos){
+            if (_minesPosition.get(i) == _mineField[row][col]){
                 return true;
             }
         }
