@@ -26,10 +26,10 @@ public class JPanelGrid extends JPanel {
 
         for (int i = 0; i < _rows; i++){
             for (int j = 0; j < _columns; j++){
-
-                JPanel field = _field.createInitialField();
-                add(field);
+                Field field = Field.createInitialField();
                 field.setName(i + j + " field");
+                field.setFieldType(Field.FieldType.Five);
+                add(field);
             }
         }
     }
