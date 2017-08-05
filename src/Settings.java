@@ -4,11 +4,12 @@ import java.awt.*;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
-    private static int _rows = 30;
-    private static int _columns = 25;
+    private static int _rows = 15;
+    private static int _columns = 15;
     private static Color _mainBgColor = Color.black;
     private static Color _bgColor = Color.black;
     private static Color _fieldFontColor = Color.yellow;
+    private static int _minesCount = (_rows * _columns) / 3;
 
     public static int getRows() {
         return _rows;
@@ -53,4 +54,16 @@ public class Settings {
     public static Color getFieldFontColor() { return _fieldFontColor ; }
 
     public static void setFieldFontColor(Color color) { _fieldFontColor  = color; }
+
+    public static int getMinesCount(){
+        return _minesCount;
+    }
+
+    public static void setMinesCount(int mines){
+        if (mines > (_rows * _columns)){
+            mines = _rows * _columns;
+        }
+
+        _minesCount = mines;
+    }
 }
