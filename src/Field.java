@@ -12,20 +12,15 @@ import java.util.Set;
 public class Field extends JPanel implements MouseListener{
     public static enum FieldType { Mine, Flag, One, Two, Three, Four, Five, Six, Seven, Eight, Nine };
     protected ImageIcon initialFieldIcon;
-    protected ImageIcon ordinaryMineFieldIcon;
-    protected ImageIcon dangerMineFieldIcon;
-    protected ImageIcon flagFieldIcon;
-    protected ImageIcon numberFieldIcon;
+    protected ImageIcon revealedFieldIcon;
     private Dimension _fieldSize;
     private Font _fieldFont;
     private FieldType _type;
     private boolean _fieldRevealed;
+    private boolean _fieldFlagged;
 
     protected Field(){
         initialFieldIcon = new ImageIcon(getClass().getResource("gray.png"));
-        ordinaryMineFieldIcon = new ImageIcon(getClass().getResource("field_initial.jpg"));
-        dangerMineFieldIcon = new ImageIcon();
-        flagFieldIcon = new ImageIcon();
         _fieldSize = new Dimension(3, 3);
         _fieldRevealed = false;
 
@@ -45,6 +40,22 @@ public class Field extends JPanel implements MouseListener{
         _type = type;
     }
 
+    public boolean getFieldRevealed(){
+        return _fieldRevealed;
+    }
+
+    public void setFieldRevealed(boolean revealed){
+        _fieldRevealed = revealed;
+    }
+
+    public boolean getFieldFlagged(){
+        return _fieldFlagged;
+    }
+
+    public void setFieldFlagged(boolean flagged){
+        _fieldFlagged = flagged;
+    }
+
     public static Field createInitialField() {
         Field f = new Field();
         JLabel lbl = new JLabel(f.initialFieldIcon, JLabel.CENTER);
@@ -52,16 +63,13 @@ public class Field extends JPanel implements MouseListener{
         return f;
     }
 
-//    public JLabel createMineField(){
-//        return new JLabel(f.ordinaryMineFieldIcon, JLabel.CENTER);
-//    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
 //        this = (Field) e.getSource();
         JLabel lbl = (JLabel)this.getComponent(0);
-        numberFieldIcon = getFieldIconByType(lbl);
-        lbl.setIcon(numberFieldIcon);
+        revealedFieldIcon = getFieldIconByType(lbl);
+        lbl.setIcon(revealedFieldIcon);
     }
 
     @Override
@@ -82,14 +90,6 @@ public class Field extends JPanel implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
-
-    public boolean getFieldRevealed(){
-        return _fieldRevealed;
-    }
-
-    public void setFieldRevealed(boolean revealed){
-        _fieldRevealed = revealed;
     }
 
     private ImageIcon getFieldIconByType(JLabel lblContainer){
