@@ -9,7 +9,7 @@ public class Settings {
     private static Color _mainBgColor = Color.black;
     private static Color _bgColor = Color.black;
     private static Color _fieldFontColor = Color.yellow;
-    private static int _minesCount = (_rows * _columns) / 3;
+    private static int _minesCount = (_rows * _columns) / 10;
 
 
     public static int getRows() {

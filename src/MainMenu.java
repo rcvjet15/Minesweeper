@@ -51,7 +51,8 @@ public class MainMenu extends JDialog {
 
         _mainAppFrameDimension = new Dimension(width, height);
         _appFrame = new MainAppFrame(_mainAppFrameDimension);
-        _appFrame.addComponent(JPanelGrid.getInstance());
+        JPanelGrid minefieldGrid = new JPanelGrid();
+        _appFrame.addComponent(minefieldGrid);
         _appFrame.setSize(_mainAppFrameDimension);
         _appFrame.showFrame();
         _appFrame.setFocusable(true);

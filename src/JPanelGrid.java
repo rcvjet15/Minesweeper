@@ -8,6 +8,7 @@ import java.util.Set;
  */
 @SuppressWarnings("serial")
 public class JPanelGrid extends JPanel {
+    public static final String GRID_NAME = "Minefield";
     private static final int GAP = 3;
     private int _rows;
     private int _columns;
@@ -16,17 +17,7 @@ public class JPanelGrid extends JPanel {
     private MinefieldBuilder _builder;
     private int[][] _minefield;
 
-    private static JPanelGrid jMinefield;
-
-    public static JPanelGrid getInstance(){
-        if (jMinefield == null){
-            jMinefield = new JPanelGrid();
-        }
-
-        return jMinefield;
-    }
-
-    private JPanelGrid(){
+    public JPanelGrid(){
         _rows = Settings.getRows();
         _columns = Settings.getColumns();
         _backgroundColor = Settings.getBgColor();
@@ -35,6 +26,7 @@ public class JPanelGrid extends JPanel {
         setBackground(_backgroundColor);
         setLayout(new GridLayout(_rows, _columns));
         setBorder(BorderFactory.createEmptyBorder(GAP, GAP, GAP, GAP));
+        setName(GRID_NAME);
 
         _builder = new MinefieldBuilder();
         _builder.createMinefield();

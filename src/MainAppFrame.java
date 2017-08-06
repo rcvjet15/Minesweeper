@@ -1,4 +1,5 @@
 import oracle.jrockit.jfr.JFR;
+import sun.applet.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,6 @@ public class MainAppFrame extends JFrame {
         setBackground(_bgColor);
         _frameComponents = new ArrayList<>();
         _dSize = d;
-        setResizable(false);
     }
 
     public void addComponent(Component component){
@@ -34,7 +34,22 @@ public class MainAppFrame extends JFrame {
 
         this.setSize(_dSize);
         this.setLocationRelativeTo(null);
-        this.setAlwaysOnTop(true);
         this.setVisible(true);
+    }
+
+    public static JPanelGrid getMinefieldGrid(){
+        Frame[] allFrames = Frame.getFrames();
+
+        for (Frame frame : allFrames){
+            if (frame instanceof MainAppFrame){
+                for (int i = 0; i < frame.getComponentCount(); i++){
+                    if (frame.getComponent(i) instanceof JPanelGrid && frame.getComponent(i).getName() == JPanelGrid.GRID_NAME){
+                        return (JPanelGrid) frame.getComponent(i);
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 }

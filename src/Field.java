@@ -105,9 +105,12 @@ public class Field extends JPanel implements MouseListener{
         else if(_type == FieldType.Mine){
             _type = FieldType.MineDanger;
             revealField();
-            
-            JPanelGrid appGrid = JPanelGrid.getInstance();
+
+            JPanelGrid appGrid = (JPanelGrid) MainAppFrame.getMinefieldGrid();
             appGrid.setGameOver();
+        }
+        else if(_type == FieldType.Empty){
+
         }
         else{
             revealField();
