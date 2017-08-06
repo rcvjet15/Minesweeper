@@ -54,6 +54,7 @@ public class JPanelGrid extends JPanel {
         }
     }
 
+
     private Field.FieldType getFieldTypeEnum(int minefieldNum){
         Field.FieldType type = null;
         switch (minefieldNum){

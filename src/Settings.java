@@ -6,7 +6,8 @@ import java.text.DecimalFormat;
  */
 public class Settings {
     public static final String FLAG_COUNT_FORMAT = "000";
-    public static final String TIMER_FORMAT = "0000";
+    public static final String TIMER_FORMAT = "mm:ss";
+    public static final String TIMER_DEFAULT_VALUE = "00:00";
     private static int _rows = 25;
     private static int _columns = 25;
     private static Color _bgColor = new Color(135,	206,	255);
@@ -56,7 +57,7 @@ public class Settings {
     }
 
     public static String getMinesCountFormatted(){
-        DecimalFormat formatter = new DecimalFormat("0000");
+        DecimalFormat formatter = new DecimalFormat(Settings.FLAG_COUNT_FORMAT);
         String output = formatter.format(_minesCount);
         return output;
     }

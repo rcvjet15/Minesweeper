@@ -1,11 +1,17 @@
+import javafx.util.converter.LocalTimeStringConverter;
 import oracle.jrockit.jfr.JFR;
 import sun.applet.Main;
 
 import javax.swing.*;import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.FormatStyle;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -57,10 +63,18 @@ public class MinesweeperGame {
         ActionListener time = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int currentTime = Integer.parseInt(lblTimer.getText());
-                DecimalFormat formater = new DecimalFormat(Settings.TIMER_FORMAT);
-                currentTime++;
-                lblTimer.setText(formater.format(currentTime));
+                SimpleDateFormat f = new SimpleDateFormat(Settings.TIMER_FORMAT);
+
+                try{
+                    Date dateValue = f.parse(lblTimer.getText());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(dateValue);
+                    cal.add(Calendar.SECOND, 1);
+                    String newTime = f.format(cal.getTime());
+                    lblTimer.setText(newTime);
+                }catch (java.text.ParseException exc){
+                    exc.printStackTrace();
+                }
             }
         };
         _timer = new Timer(1000, time);
@@ -71,12 +85,18 @@ public class MinesweeperGame {
     }
 
     public void setGameOver(){
+        _timer.stop();
         _minefieldGrid.showAllFields();
+    }
+
+    // Check if remaining closes fields are mines
+    public void isGameWon(){
+
     }
 
     private void resetGame(){
         _timer.stop();
-        lblTimer.setText(Settings.FLAG_COUNT_FORMAT);
+        lblTimer.setText(Settings.TIMER_DEFAULT_VALUE);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
 
 //       mainPanel.removeAll();
@@ -95,7 +115,8 @@ public class MinesweeperGame {
         lblTimer.setFont(headerFont);
         lblTimer.setForeground(Settings.getHeaderFontColor());
         lblTimer.setBackground(Color.black);
-        lblTimer.setText("000");
+        lblTimer.setText(Settings.TIMER_DEFAULT_VALUE);
+
         lblFlagCount.setFont(headerFont);
         lblFlagCount.setForeground(Settings.getHeaderFontColor());
         lblFlagCount.setBackground(Color.black);

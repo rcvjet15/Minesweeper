@@ -110,6 +110,7 @@ public class Field extends JPanel implements MouseListener{
             appForm.setGameOver();
         }
         else if(_type == FieldType.Empty){
+            revealField();
             // TODO: reveal all nearby empty fields
         }
         else{

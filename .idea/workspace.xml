@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bca0dcd-0ead-4263-9358-68d4d9905639" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Minesweeper/MinesweeperGame.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Field.java" afterPath="$PROJECT_DIR$/src/Field.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JPanelGrid.java" afterPath="$PROJECT_DIR$/src/JPanelGrid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainAppFrame.java" afterPath="$PROJECT_DIR$/src/MainAppFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainMenu.java" afterPath="$PROJECT_DIR$/src/MainMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MinesweeperGame.form" afterPath="$PROJECT_DIR$/src/MinesweeperGame.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MinesweeperGame.java" afterPath="$PROJECT_DIR$/src/MinesweeperGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Program.java" afterPath="$PROJECT_DIR$/src/Program.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Settings.java" afterPath="$PROJECT_DIR$/src/Settings.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -64,18 +61,16 @@
       <file leaf-file-name="MinesweeperGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MinesweeperGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="51" />
+            <state relative-caret-position="364">
+              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#926#927#0" expanded="true" />
-                <element signature="e#2034#2035#0" expanded="true" />
-                <element signature="e#2064#2065#0" expanded="true" />
-                <element signature="e#2096#2097#0" expanded="true" />
-                <element signature="e#2142#2143#0" expanded="true" />
-                <element signature="e#3141#3142#0" expanded="true" />
-                <element signature="e#3180#3181#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
+                <element signature="e#1118#1119#0" expanded="true" />
+                <element signature="e#2523#2524#0" expanded="true" />
+                <element signature="e#2553#2554#0" expanded="true" />
+                <element signature="e#3766#3767#0" expanded="true" />
+                <element signature="e#3805#3806#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +86,8 @@
       <file leaf-file-name="JPanelGrid.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/JPanelGrid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="499">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,8 +98,8 @@
       <file leaf-file-name="Field.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Field.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+            <state relative-caret-position="273">
+              <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#mouseReleased#0;class#Field#0" expanded="false" />
@@ -130,17 +125,17 @@
       <file leaf-file-name="Settings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="7" column="54" lean-forward="false" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+            <state relative-caret-position="153">
+              <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setRows#0;class#Settings#0" expanded="false" />
                 <element signature="method#setColumns#0;class#Settings#0" expanded="false" />
-                <element signature="e#1171#1172#0" expanded="true" />
-                <element signature="e#1202#1203#0" expanded="true" />
+                <element signature="e#1234#1235#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
                 <element signature="method#setMinesCount#0;class#Settings#0" expanded="false" />
-                <element signature="e#2097#2098#0" expanded="true" />
-                <element signature="e#2137#2138#0" expanded="true" />
+                <element signature="e#2180#2181#0" expanded="true" />
+                <element signature="e#2220#2221#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,12 +189,12 @@
         <option value="$PROJECT_DIR$/src/MainMenu.form" />
         <option value="$PROJECT_DIR$/src/Program.java" />
         <option value="$PROJECT_DIR$/src/MinesweeperGame.form" />
-        <option value="$PROJECT_DIR$/src/JPanelGrid.java" />
         <option value="$PROJECT_DIR$/src/MainAppFrame.java" />
-        <option value="$PROJECT_DIR$/src/Field.java" />
         <option value="$PROJECT_DIR$/src/MainMenu.java" />
-        <option value="$PROJECT_DIR$/src/MinesweeperGame.java" />
         <option value="$PROJECT_DIR$/src/Settings.java" />
+        <option value="$PROJECT_DIR$/src/MinesweeperGame.java" />
+        <option value="$PROJECT_DIR$/src/JPanelGrid.java" />
+        <option value="$PROJECT_DIR$/src/Field.java" />
       </list>
     </option>
   </component>
@@ -671,7 +666,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/MinesweeperGame.java</url>
-          <line>77</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
@@ -681,8 +676,14 @@
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MinesweeperGame.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -784,11 +785,11 @@
             <element signature="imports" expanded="true" />
             <element signature="method#setRows#0;class#Settings#0" expanded="false" />
             <element signature="method#setColumns#0;class#Settings#0" expanded="false" />
-            <element signature="e#1171#1172#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
             <element signature="method#setMinesCount#0;class#Settings#0" expanded="false" />
-            <element signature="e#2097#2098#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
+            <element signature="e#2180#2181#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -930,19 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#mouseReleased#0;class#Field#0" expanded="false" />
-            <element signature="method#mouseEntered#0;class#Field#0" expanded="false" />
-            <element signature="method#mouseExited#0;class#Field#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -973,47 +961,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="56" lean-forward="false" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setRows#0;class#Settings#0" expanded="false" />
+            <element signature="method#setColumns#0;class#Settings#0" expanded="false" />
+            <element signature="e#1234#1235#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="method#setMinesCount#0;class#Settings#0" expanded="false" />
+            <element signature="e#2180#2181#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/JPanelGrid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="499">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Settings.java">
+    <entry file="file://$PROJECT_DIR$/src/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="54" lean-forward="false" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+        <state relative-caret-position="273">
+          <caret line="112" column="26" lean-forward="false" selection-start-line="112" selection-start-column="26" selection-end-line="112" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setRows#0;class#Settings#0" expanded="false" />
-            <element signature="method#setColumns#0;class#Settings#0" expanded="false" />
-            <element signature="e#1171#1172#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="method#setMinesCount#0;class#Settings#0" expanded="false" />
-            <element signature="e#2097#2098#0" expanded="true" />
-            <element signature="e#2137#2138#0" expanded="true" />
+            <element signature="method#mouseReleased#0;class#Field#0" expanded="false" />
+            <element signature="method#mouseEntered#0;class#Field#0" expanded="false" />
+            <element signature="method#mouseExited#0;class#Field#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MinesweeperGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="51" />
+        <state relative-caret-position="364">
+          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#926#927#0" expanded="true" />
-            <element signature="e#2034#2035#0" expanded="true" />
-            <element signature="e#2064#2065#0" expanded="true" />
-            <element signature="e#2096#2097#0" expanded="true" />
-            <element signature="e#2142#2143#0" expanded="true" />
-            <element signature="e#3141#3142#0" expanded="true" />
-            <element signature="e#3180#3181#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#2523#2524#0" expanded="true" />
+            <element signature="e#2553#2554#0" expanded="true" />
+            <element signature="e#3766#3767#0" expanded="true" />
+            <element signature="e#3805#3806#0" expanded="true" />
           </folding>
         </state>
       </provider>
