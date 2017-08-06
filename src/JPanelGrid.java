@@ -46,7 +46,9 @@ public class JPanelGrid extends JPanel {
         Field.FieldType type = null;
         switch (minefieldNum){
             case MinefieldBuilder.MINE_INDICATOR:
-                type =  Field.FieldType.Mine;
+                return Field.FieldType.Mine;
+            case 0:
+                return Field.FieldType.Empty;
             case 1:
                 return Field.FieldType.One;
             case 2:
@@ -63,10 +65,9 @@ public class JPanelGrid extends JPanel {
                 return Field.FieldType.Seven;
             case 8:
                 return Field.FieldType.Eight;
-            default:
-                break;
         }
-        return type;
+
+        return null;
     }
 }
 

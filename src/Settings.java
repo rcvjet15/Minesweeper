@@ -4,12 +4,13 @@ import java.awt.*;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
-    private static int _rows = 4;
-    private static int _columns = 4;
+    private static int _rows = 25;
+    private static int _columns = 25;
     private static Color _mainBgColor = Color.black;
     private static Color _bgColor = Color.black;
     private static Color _fieldFontColor = Color.yellow;
     private static int _minesCount = (_rows * _columns) / 3;
+
 
     public static int getRows() {
         return _rows;

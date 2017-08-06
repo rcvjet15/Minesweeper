@@ -10,7 +10,7 @@ import java.util.Set;
  * Created by Robi on 03/08/2017.
  */
 public class Field extends JPanel implements MouseListener{
-    public static enum FieldType { Mine, Flag, One, Two, Three, Four, Five, Six, Seven, Eight, Nine };
+    public static enum FieldType { Mine, MineDanger, Empty, Flag, One, Two, Three, Four, Five, Six, Seven, Eight, Nine };
     protected ImageIcon initialFieldIcon;
     protected ImageIcon revealedFieldIcon;
     private Dimension _fieldSize;
@@ -63,18 +63,22 @@ public class Field extends JPanel implements MouseListener{
         return f;
     }
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
-//        this = (Field) e.getSource();
-        JLabel lbl = (JLabel)this.getComponent(0);
-        revealedFieldIcon = getFieldIconByType(lbl);
-        lbl.setIcon(revealedFieldIcon);
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        if (_fieldRevealed){
+            return;
+        }
+        else if(SwingUtilities.isLeftMouseButton(e)){
+            processLeftClick();
+        }
+        else if(SwingUtilities.isRightMouseButton(e)){
+            processRightClick();
+        }
     }
 
     @Override
@@ -92,6 +96,46 @@ public class Field extends JPanel implements MouseListener{
 
     }
 
+    private void processLeftClick(){
+        JLabel lbl = (JLabel)this.getComponent(0);
+
+        if (_fieldFlagged){
+            return;
+        }
+        else if(_type == FieldType.Mine){
+            ImageIcon dangerIcon = createMineDangerIcon(lbl);
+            lbl.setIcon(dangerIcon);
+            _fieldRevealed = true;
+        }
+        else{
+            revealedFieldIcon = getFieldIconByType(lbl);
+            lbl.setIcon(revealedFieldIcon);
+            _fieldRevealed = true;
+        }
+    }
+
+    private void processRightClick(){
+        JLabel lbl = (JLabel)this.getComponent(0);
+
+        if (_fieldFlagged){
+            _fieldFlagged = false;
+            lbl.setIcon(initialFieldIcon);
+        }
+        else{
+            _fieldFlagged = true;
+            ImageIcon flagIcon = createFieldFlagIcon(lbl);
+            lbl.setIcon(flagIcon);
+        }
+    }
+
+    private ImageIcon createFieldFlagIcon(JLabel lbl){
+        return new ImageIcon(new ImageIcon(getClass().getResource("flag.png")).getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
+    }
+
+    private ImageIcon createMineDangerIcon(JLabel lbl){
+        return new ImageIcon(new ImageIcon(getClass().getResource("mine_danger.jpg")).getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
+    }
+
     private ImageIcon getFieldIconByType(JLabel lblContainer){
         String iconName = null;
 
@@ -99,8 +143,11 @@ public class Field extends JPanel implements MouseListener{
             case Mine:
                 iconName = "mine.jpg";
                 break;
-            case Flag:
-                iconName = "flag.jpg";
+            case MineDanger:
+                iconName = "mine_danger.jpg";
+                break;
+            case Empty:
+                iconName = "white.png";
                 break;
             case One:
                 iconName = "one.png";

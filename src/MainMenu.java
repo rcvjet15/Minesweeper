@@ -45,7 +45,11 @@ public class MainMenu extends JDialog {
     }
 
     private void onStart(){
-        _mainAppFrameDimension = new Dimension(Settings.getColumns() * 25, Settings.getRows() * 25);
+
+        int width = Settings.getColumns() > 15 ? 850 : 650;
+        int height = Settings.getRows() > 15 ? 1000 : 700;
+
+        _mainAppFrameDimension = new Dimension(width, height);
         _appFrame = new MainAppFrame(_mainAppFrameDimension);
         _appFrame.addComponent(new JPanelGrid());
         _appFrame.setSize(_mainAppFrameDimension);
