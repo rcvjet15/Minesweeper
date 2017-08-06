@@ -102,7 +102,7 @@ public class Field extends JPanel implements MouseListener{
         if (_fieldFlagged){
             return;
         }
-        else if(_type == FieldType.Mine){
+        else if(_type == FieldType.Mine && _fieldRevealed == false){
             _type = FieldType.MineDanger;
             revealField();
 

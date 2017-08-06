@@ -3,14 +3,16 @@ import javafx.scene.control.Alert;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Set;
 
-public class MainMenu extends JDialog {
+public class MainMenu extends JFrame {
     private JPanel contentPane;
     private JButton buttonStart;
     private JButton buttonAbout;
     private JButton buttonSettings;
     private JLabel labelAppTitle;
     private JButton buttonExit;
+    private JPanel menuPanel;
     private MainAppFrame _appFrame;
     private Toolkit _toolkit = Toolkit.getDefaultToolkit();
     private Dimension _screenSize = _toolkit.getScreenSize();
@@ -20,7 +22,8 @@ public class MainMenu extends JDialog {
     public MainMenu() {
         setContentPane(contentPane);
         setLocation(_center);
-
+        contentPane.setBackground(Settings.getBgColor());
+        menuPanel.setBackground(Settings.getBgColor());
         getRootPane().setDefaultButton(buttonStart);
 
         buttonStart.addActionListener(e -> onStart());
@@ -51,8 +54,11 @@ public class MainMenu extends JDialog {
 
         _mainAppFrameDimension = new Dimension(width, height);
         _appFrame = new MainAppFrame(_mainAppFrameDimension);
-        JPanelGrid minefieldGrid = new JPanelGrid();
-        _appFrame.addComponent(minefieldGrid);
+
+        MinesweeperGame gameForm = new MinesweeperGame();
+        JPanel p = gameForm.getMainPanel();
+
+        _appFrame.addComponent(p);
         _appFrame.setSize(_mainAppFrameDimension);
         _appFrame.showFrame();
         _appFrame.setFocusable(true);

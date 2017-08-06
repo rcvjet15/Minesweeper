@@ -29,7 +29,7 @@ public class MainAppFrame extends JFrame {
 
     public void showFrame(){
         for(Component c : _frameComponents){
-            this.getContentPane().add(c);
+            this.add(c);
         }
 
         this.setSize(_dSize);
@@ -39,11 +39,16 @@ public class MainAppFrame extends JFrame {
 
     public static JPanelGrid getMinefieldGrid(){
         Frame[] allFrames = Frame.getFrames();
-
+        MainAppFrame openedFrame;
         for (Frame frame : allFrames){
             if (frame instanceof MainAppFrame){
-                for (int i = 0; i < frame.getComponentCount(); i++){
-                    if (frame.getComponent(i) instanceof JPanelGrid && frame.getComponent(i).getName() == JPanelGrid.GRID_NAME){
+                openedFrame = (MainAppFrame) frame;
+                for (int i = 0; i < openedFrame.getComponentCount(); i++){
+                    String name = openedFrame.getClass().getName();
+                    name = openedFrame.getComponent(i).getClass().getName();
+                    name = openedFrame.getComponent(i).getName();
+                    boolean is = openedFrame.getComponent(i) instanceof JPanelGrid;
+                    if (openedFrame.getComponent(i) instanceof JPanelGrid && openedFrame.getComponent(i).getName() == JPanelGrid.GRID_NAME){
                         return (JPanelGrid) frame.getComponent(i);
                     }
                 }

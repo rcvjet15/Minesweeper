@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MinesweeperGame">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="536" height="438"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="9780e" binding="panelHeader" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <preferredSize width="0" height="50"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="7ebe9" class="javax.swing.JLabel" binding="lblTimer">
+            <constraints border-constraint="East"/>
+            <properties>
+              <focusable value="false"/>
+              <font size="20" style="1"/>
+              <foreground color="-4475633"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <name value="timer"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="27"/>
+              <text value="00:00"/>
+            </properties>
+          </component>
+          <component id="ddc9d" class="javax.swing.JButton" binding="btnReset">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="true"/>
+              <name value="resetBtn"/>
+              <opaque value="true"/>
+              <preferredSize width="30" height="32"/>
+              <selected value="false"/>
+              <text value="Button"/>
+            </properties>
+          </component>
+          <component id="befd4" class="javax.swing.JLabel" binding="lblFlagCount">
+            <constraints border-constraint="West"/>
+            <properties>
+              <focusable value="false"/>
+              <font name="Curlz MT" size="20" style="1"/>
+              <foreground color="-4475630"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <maximumSize width="1000" height="16"/>
+              <preferredSize width="100" height="16"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <hspacer id="e2552">
+        <constraints border-constraint="Center"/>
+      </hspacer>
+    </children>
+  </grid>
+</form>

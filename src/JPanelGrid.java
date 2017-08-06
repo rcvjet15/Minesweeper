@@ -20,7 +20,7 @@ public class JPanelGrid extends JPanel {
     public JPanelGrid(){
         _rows = Settings.getRows();
         _columns = Settings.getColumns();
-        _backgroundColor = Settings.getBgColor();
+        _backgroundColor = Color.black;
         _field = new Field();
 
         setBackground(_backgroundColor);
