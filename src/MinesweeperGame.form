@@ -15,8 +15,9 @@
         <border type="none"/>
         <children>
           <component id="7ebe9" class="javax.swing.JLabel" binding="lblTimer">
-            <constraints border-constraint="East"/>
+            <constraints border-constraint="West"/>
             <properties>
+              <background color="-16448251"/>
               <focusable value="false"/>
               <font size="20" style="1"/>
               <foreground color="-4475633"/>
@@ -41,7 +42,7 @@
             </properties>
           </component>
           <component id="befd4" class="javax.swing.JLabel" binding="lblFlagCount">
-            <constraints border-constraint="West"/>
+            <constraints border-constraint="East"/>
             <properties>
               <focusable value="false"/>
               <font name="Curlz MT" size="20" style="1"/>
@@ -58,6 +59,12 @@
       <hspacer id="e2552">
         <constraints border-constraint="Center"/>
       </hspacer>
+      <grid id="fc238" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

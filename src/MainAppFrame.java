@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class MainAppFrame extends JFrame {
 
     private Color _bgColor = Color.WHITE;
-    private Dimension _dSize;
+    private static Object _childForm;
 
     ArrayList<Component> _frameComponents;
 
@@ -20,41 +20,16 @@ public class MainAppFrame extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(_bgColor);
         _frameComponents = new ArrayList<>();
-        _dSize = d;
-    }
-
-    public void addComponent(Component component){
-        _frameComponents.add(component);
-    }
-
-    public void showFrame(){
-        for(Component c : _frameComponents){
-            this.add(c);
-        }
-
-        this.setSize(_dSize);
+        this.setSize(d);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        this.setFocusable(true);
     }
 
-    public static JPanelGrid getMinefieldGrid(){
-        Frame[] allFrames = Frame.getFrames();
-        MainAppFrame openedFrame;
-        for (Frame frame : allFrames){
-            if (frame instanceof MainAppFrame){
-                openedFrame = (MainAppFrame) frame;
-                for (int i = 0; i < openedFrame.getComponentCount(); i++){
-                    String name = openedFrame.getClass().getName();
-                    name = openedFrame.getComponent(i).getClass().getName();
-                    name = openedFrame.getComponent(i).getName();
-                    boolean is = openedFrame.getComponent(i) instanceof JPanelGrid;
-                    if (openedFrame.getComponent(i) instanceof JPanelGrid && openedFrame.getComponent(i).getName() == JPanelGrid.GRID_NAME){
-                        return (JPanelGrid) frame.getComponent(i);
-                    }
-                }
-            }
-        }
+    public static Object getChildForm(){
+        return _childForm;
+    }
 
-        return null;
+    public static void setChildForm(Object form){
+        _childForm = form;
     }
 }

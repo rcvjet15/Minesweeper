@@ -5,14 +5,15 @@ import java.text.DecimalFormat;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
+    public static final String FLAG_COUNT_FORMAT = "000";
+    public static final String TIMER_FORMAT = "0000";
     private static int _rows = 25;
     private static int _columns = 25;
-    private static Color _mainBgColor = Color.black;
-    private static Color _bgColor = new Color(255, 255, 255);
+    private static Color _bgColor = new Color(135,	206,	255);
     private static Color _fieldFontColor = Color.yellow;
     private static int _minesCount = (_rows * _columns) / 10;
     private static Color _headerFontColor = Color.yellow;
-
+    private static Color _mainButtonsColor = Color.white;
 
     public static int getRows() {
         return _rows;
@@ -36,14 +37,6 @@ public class Settings {
             throw new IllegalArgumentException("Number of columns cannot be bellow 0!");
         }
         _columns = columns;
-    }
-
-    public static Color getMainBgColor(){
-        return _mainBgColor;
-    }
-
-    public static void setMainBgColor(Color color){
-        _mainBgColor = color;
     }
 
     public static Color getBgColor(){
@@ -79,4 +72,8 @@ public class Settings {
     public static Color getHeaderFontColor() { return _headerFontColor; }
 
     public static void setHeaderFontColot(Color color) { _headerFontColor = color; }
+
+    public static Color getMainButtonsColor(){
+        return _mainButtonsColor;
+    }
 }

@@ -22,9 +22,8 @@ public class MainMenu extends JFrame {
     public MainMenu() {
         setContentPane(contentPane);
         setLocation(_center);
-        contentPane.setBackground(Settings.getBgColor());
-        menuPanel.setBackground(Settings.getBgColor());
         getRootPane().setDefaultButton(buttonStart);
+        setupVisual();
 
         buttonStart.addActionListener(e -> onStart());
         buttonSettings.addActionListener(e -> onSettings());
@@ -47,6 +46,18 @@ public class MainMenu extends JFrame {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    private void setupVisual(){
+        contentPane.setBackground(Settings.getBgColor());
+        menuPanel.setBackground(Settings.getBgColor());
+
+        for (int i = 0; i < menuPanel.getComponentCount(); i++){
+            if (menuPanel.getComponent(i) instanceof JButton){
+                JButton btn = (JButton)menuPanel.getComponent(i);
+                btn.setBackground(Settings.getMainButtonsColor());
+            }
+        }
+    }
+
     private void onStart(){
 
         int width = Settings.getColumns() > 15 ? 850 : 650;
@@ -56,12 +67,14 @@ public class MainMenu extends JFrame {
         _appFrame = new MainAppFrame(_mainAppFrameDimension);
 
         MinesweeperGame gameForm = new MinesweeperGame();
-        JPanel p = gameForm.getMainPanel();
+        JPanel gameMainPanel = gameForm.getMainPanel();
+        gameForm.setParentFrame(_appFrame);
 
-        _appFrame.addComponent(p);
-        _appFrame.setSize(_mainAppFrameDimension);
-        _appFrame.showFrame();
-        _appFrame.setFocusable(true);
+        _appFrame.setChildForm(gameForm);
+
+        _appFrame.add(gameMainPanel);
+        _appFrame.setVisible(true);
+        gameForm.startTimer();
     }
 
     private void onSettings(){
@@ -75,4 +88,5 @@ public class MainMenu extends JFrame {
     private void onExit() {
         dispose();
     }
+
 }

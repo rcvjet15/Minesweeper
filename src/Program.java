@@ -4,9 +4,9 @@ import java.awt.*;
 public class Program {
 
     private static void StartApp(){
-        MainMenu dialog = new MainMenu();
-        dialog.pack();
-        dialog.setVisible(true);
+        MainMenu main = new MainMenu();
+        main.setSize(250, 200);
+        main.setVisible(true);
     }
 
     public static void main(String[] args) {

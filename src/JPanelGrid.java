@@ -44,11 +44,7 @@ public class JPanelGrid extends JPanel {
         }
     }
 
-    public void setGameOver(){
-        showAllFields();
-    }
-
-    private void showAllFields(){
+    public void showAllFields(){
         Field f;
         for (int i = 0; i < this.getComponentCount(); i++){
             if (this.getComponent(i)  instanceof Field ){

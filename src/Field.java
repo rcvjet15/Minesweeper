@@ -106,16 +106,15 @@ public class Field extends JPanel implements MouseListener{
             _type = FieldType.MineDanger;
             revealField();
 
-            JPanelGrid appGrid = (JPanelGrid) MainAppFrame.getMinefieldGrid();
-            appGrid.setGameOver();
+            MinesweeperGame appForm = (MinesweeperGame) MainAppFrame.getChildForm();
+            appForm.setGameOver();
         }
         else if(_type == FieldType.Empty){
-
+            // TODO: reveal all nearby empty fields
         }
         else{
             revealField();
         }
-        _fieldRevealed = true;
     }
 
     private void processRightClick(){
@@ -136,6 +135,7 @@ public class Field extends JPanel implements MouseListener{
         JLabel lbl = (JLabel)this.getComponent(0);
         revealedFieldIcon = getFieldIconByType(lbl);
         lbl.setIcon(revealedFieldIcon);
+        _fieldRevealed = true;
     }
 
     private ImageIcon createFieldFlagIcon(JLabel lbl){
