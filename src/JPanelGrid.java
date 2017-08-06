@@ -16,7 +16,17 @@ public class JPanelGrid extends JPanel {
     private MinefieldBuilder _builder;
     private int[][] _minefield;
 
-    public JPanelGrid(){
+    private static JPanelGrid jMinefield;
+
+    public static JPanelGrid getInstance(){
+        if (jMinefield == null){
+            jMinefield = new JPanelGrid();
+        }
+
+        return jMinefield;
+    }
+
+    private JPanelGrid(){
         _rows = Settings.getRows();
         _columns = Settings.getColumns();
         _backgroundColor = Settings.getBgColor();
@@ -38,6 +48,20 @@ public class JPanelGrid extends JPanel {
 
                 field.setFieldType(getFieldTypeEnum(_minefield[i][j]));
                 add(field);
+            }
+        }
+    }
+
+    public void setGameOver(){
+        showAllFields();
+    }
+
+    private void showAllFields(){
+        Field f;
+        for (int i = 0; i < this.getComponentCount(); i++){
+            if (this.getComponent(i)  instanceof Field ){
+                f = (Field) this.getComponent(i);
+                f.revealField();
             }
         }
     }

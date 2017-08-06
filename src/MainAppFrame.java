@@ -32,7 +32,6 @@ public class MainAppFrame extends JFrame {
             this.getContentPane().add(c);
         }
 
-        // this.pack();
         this.setSize(_dSize);
         this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);

@@ -103,15 +103,16 @@ public class Field extends JPanel implements MouseListener{
             return;
         }
         else if(_type == FieldType.Mine){
-            ImageIcon dangerIcon = createMineDangerIcon(lbl);
-            lbl.setIcon(dangerIcon);
-            _fieldRevealed = true;
+            _type = FieldType.MineDanger;
+            revealField();
+            
+            JPanelGrid appGrid = JPanelGrid.getInstance();
+            appGrid.setGameOver();
         }
         else{
-            revealedFieldIcon = getFieldIconByType(lbl);
-            lbl.setIcon(revealedFieldIcon);
-            _fieldRevealed = true;
+            revealField();
         }
+        _fieldRevealed = true;
     }
 
     private void processRightClick(){
@@ -126,6 +127,12 @@ public class Field extends JPanel implements MouseListener{
             ImageIcon flagIcon = createFieldFlagIcon(lbl);
             lbl.setIcon(flagIcon);
         }
+    }
+
+    public void revealField(){
+        JLabel lbl = (JLabel)this.getComponent(0);
+        revealedFieldIcon = getFieldIconByType(lbl);
+        lbl.setIcon(revealedFieldIcon);
     }
 
     private ImageIcon createFieldFlagIcon(JLabel lbl){
