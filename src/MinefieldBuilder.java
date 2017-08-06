@@ -19,7 +19,7 @@ public class MinefieldBuilder {
         return _mineField;
     }
 
-    private void createMinefield(){
+    public void createMinefield(){
         createMinesPosition();
         createMinefieldNumbers();
     }
@@ -31,11 +31,13 @@ public class MinefieldBuilder {
         int r = 0;
         boolean duplicate = false;
 
+        // Create array of random numbers where each array element will be miene position in _minefiled 2d array
         for (int i = 0; i < Settings.getMinesCount(); i++){
             do{
                 duplicate = false;
                 r = rand.nextInt(max);
 
+                // There cannot be two or more mines in one position
                 for (int j = 0; j < _minesPosition.size(); j++){
                     if (r == _minesPosition.get(j)){
                         duplicate = true;
@@ -66,8 +68,6 @@ public class MinefieldBuilder {
             return MINE_INDICATOR;
         }
 
-        int fieldIndex = row * _mineField[0].length - (_mineField[0].length - col);
-
         // Get surrounding elements
         int previousRow = row > 0 ? row - 1 : 0;
         int nextRow = row < _mineField.length - 1 ? row + 1 : _mineField.length - 1;
@@ -76,8 +76,9 @@ public class MinefieldBuilder {
         int nextCol = col < _mineField[0].length - 1 ? col + 1 : _mineField[0].length - 1;
 
         // Loop through elements that surround current field
-        for (int i = previousRow; i < nextRow; i++){
-            for (int j = previousCol; j < nextCol; j++){
+        for (int i = previousRow; i <= nextRow; i++){
+            for (int j = previousCol; j <= nextCol; j++){
+                // If surronding field is mone, increment mines count counter
                 if (isMine(i, j)){
                     minesCount++;
                 }
@@ -89,9 +90,12 @@ public class MinefieldBuilder {
 
     // Check if field is mine
     private boolean isMine(int row, int col){
-        // Loop through mines position array and return true if mine is on position number 'fieldPos'
+        // Get field index on nth row and n column
+        int fieldIndex = ((row + 1) * _mineField[0].length) - (_mineField[0].length - (col + 1)) - 1;
+
+        // Loop through mines position array and return true if mine is on same position as current field on fieldIndex
         for (int i = 0; i < _minesPosition.size(); i++){
-            if (_minesPosition.get(i) == _mineField[row][col]){
+            if (_minesPosition.get(i) == fieldIndex){
                 return true;
             }
         }

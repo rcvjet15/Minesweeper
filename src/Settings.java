@@ -4,8 +4,8 @@ import java.awt.*;
  * Created by Robi on 03/08/2017.
  */
 public class Settings {
-    private static int _rows = 15;
-    private static int _columns = 15;
+    private static int _rows = 4;
+    private static int _columns = 4;
     private static Color _mainBgColor = Color.black;
     private static Color _bgColor = Color.black;
     private static Color _fieldFontColor = Color.yellow;
