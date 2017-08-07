@@ -125,23 +125,25 @@ public class MinesweeperGame {
             return;
         }
 
-
         int[][] minefieldMatrix = _minefieldGrid.getMinefield();
 
-        ArrayList<Field> queue = new ArrayList<Field>();
-        queue.add(field);
+        // Must use points because java.util.ConcurrentModificationException will be raised if objects type of Field is used in ArrayList
+        ArrayList<Point> queue = new ArrayList<Point>();
+        queue.add(new Point(field.getRow(), field.getRow()));
 
-        for(Field F : queue){
-            Field fWest = F;
-            Field fEast = F;
+        for(int i = 0; i < queue.size(); i++){
+            Point P = queue.get(i);
+            Point pWest = P;
+            Point pEast = P;
 
-            ArrayList<Field> betweenEastWest = new ArrayList<Field>();
+            ArrayList<Point> betweenEastWest = new ArrayList<Point>();
+
             // Search west
-            int row = fWest.getRow();
+            int row = pWest.x;
 
-            for (int c = fWest.getColumn(); c < minefieldMatrix[row].length; c++){
+            for (int c = pWest.y; c < minefieldMatrix[row].length; c++){
                 if (minefieldMatrix[row][c] == targetNum){
-                    betweenEastWest.add(_minefieldGrid.getFieldByPosition(row, c));
+                    betweenEastWest.add(new Point(row, c));
                 }
                 else{
                     break;
@@ -149,34 +151,35 @@ public class MinesweeperGame {
             }
 
             // Search east
-            row = fEast.getRow();
+            row = pEast.x;
 
-            for (int c = fEast.getColumn(); c >= 0; c--){
+            for (int c = pEast.y; c >= 0; c--){
                 if (minefieldMatrix[row][c] == targetNum){
-                    betweenEastWest.add(_minefieldGrid.getFieldByPosition(row, c));
+                    betweenEastWest.add(new Point(row, c));
                 }
                 else{
                     break;
                 }
             }
 
-            for (Field f : betweenEastWest){
-                minefieldMatrix[f.getRow()][f.getColumn()] = replacementNum;
-                _minefieldGrid.getFieldByPosition(f.getRow(), f.getColumn()).setFieldRevealed(true);
+            // Search north and south for fields between east and west
+            for (Point p : betweenEastWest){
+                minefieldMatrix[p.x][p.y] = replacementNum;
+                _minefieldGrid.getFieldByPosition(p.x, p.y).revealField();
 
-                int column = f.getColumn();
+                int column = p.y;
 
                 // Search empty north fields and add them tu queue
-                for (int r = f.getRow(); r >= 0; r--){
+                for (int r = p.x; r >= 0; r--){
                     if (minefieldMatrix[r][column] == targetNum){
-                        queue.add(_minefieldGrid.getFieldByPosition(r, column));
+                        queue.add(new Point(r, column));
                     }
                 }
 
                 // Search empty south fields and add them tu queue
-                for (int r = f.getRow(); r < minefieldMatrix.length; r++){
+                for (int r = p.x; r < minefieldMatrix.length; r++){
                     if (minefieldMatrix[r][column] == targetNum){
-                        queue.add(_minefieldGrid.getFieldByPosition(r, column));
+                        queue.add(new Point(r, column));
                     }
                 }
             }

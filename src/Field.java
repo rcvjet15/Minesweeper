@@ -46,10 +46,6 @@ public class Field extends JPanel implements MouseListener{
         return _fieldRevealed;
     }
 
-    public void setFieldRevealed(boolean revealed){
-        _fieldRevealed = revealed;
-    }
-
     public boolean getFieldFlagged(){
         return _fieldFlagged;
     }
@@ -127,7 +123,7 @@ public class Field extends JPanel implements MouseListener{
         }
         else if(_type == FieldType.Empty){
             // TODO: reveal all nearby empty fields
-            gameForm.revealEmptyNeighboursFields(this);
+            gameForm.revealEmptyNeighboursFields(this, 0, -2);
         }
         else{
             revealField();
