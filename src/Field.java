@@ -61,6 +61,10 @@ public class Field extends JPanel implements MouseListener{
     }
 
     public void revealField(){
+        if (_fieldRevealed == true){
+            return;
+        }
+
         JLabel lbl = (JLabel)this.getComponent(0);
         revealedFieldIcon = getFieldIconByType(lbl);
         lbl.setIcon(revealedFieldIcon);
