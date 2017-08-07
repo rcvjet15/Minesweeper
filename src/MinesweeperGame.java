@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
@@ -43,20 +44,24 @@ public class MinesweeperGame {
         return this.mainPanel;
     }
 
-    public void IncrementFlagCount(){
+    public void incrementFlagCount(){
         DecimalFormat formatter = new DecimalFormat(Settings.FLAG_COUNT_FORMAT);
         int value = Integer.parseInt(lblFlagCount.getText());
-        if (value < Settings.getMinesCount()){
-            lblFlagCount.setText(formatter.format((value++)));
+        if (value <= Settings.getMinesCount()){
+            lblFlagCount.setText(formatter.format((++value)));
         }
     }
 
-    public void DecrementFlagCount(){
+    public void decrementFlagCount(){
         DecimalFormat formatter = new DecimalFormat(Settings.FLAG_COUNT_FORMAT);
         int value = Integer.parseInt(lblFlagCount.getText());
         if (value > 0){
-            lblFlagCount.setText(formatter.format((value--)));
+            lblFlagCount.setText(formatter.format((--value)));
         }
+    }
+
+    public int getFlagCount(){
+        return Integer.parseInt(lblFlagCount.getText());
     }
 
     public void setupTimer(){
@@ -84,14 +89,51 @@ public class MinesweeperGame {
         _timer.start();
     }
 
-    public void setGameOver(){
+    // Stop timer, show all fields and show eng message based on 'success' parameter
+    public void setGameOver(boolean success){
         _timer.stop();
         _minefieldGrid.showAllFields();
+
+        if (success){
+            JOptionPane.showMessageDialog(null, "Game Won!!!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Game Lost!", "Fail", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    // Check if remaining closes fields are mines
-    public void isGameWon(){
+    // Check if remaining closed fields are mines
+    public boolean isGameWon(){
+        if (_minefieldGrid.getNumberOfFields( false) == Settings.getMinesCount()){
+            return true;
+        }
+        return false;
+    }
 
+    public void setParentFrame(MainAppFrame appFrame){
+        _parentFrame = appFrame;
+    }
+
+    // Reveal empty fields by using Flood-fill algorithm
+    public void revealEmptyNeighboursFields(Field field){
+        if (field.getFieldRevealed()){
+            return;
+        }
+        else if (field.getFieldFlagged()){
+            return;
+        }
+
+        ArrayList<Field> queue = new ArrayList<Field>();
+        queue.add(field);
+
+        for(Field f : queue){
+            Field west = f;
+            Field east = west;
+
+            ArrayList<Field> betweenEastWest = new ArrayList<Field>();
+            // Search west
+            for(int i = f.get)
+        }
     }
 
     private void resetGame(){
@@ -121,9 +163,5 @@ public class MinesweeperGame {
         lblFlagCount.setForeground(Settings.getHeaderFontColor());
         lblFlagCount.setBackground(Color.black);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
-    }
-
-    public void setParentFrame(MainAppFrame appFrame){
-        _parentFrame = appFrame;
     }
 }

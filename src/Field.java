@@ -18,6 +18,8 @@ public class Field extends JPanel implements MouseListener{
     private FieldType _type;
     private boolean _fieldRevealed;
     private boolean _fieldFlagged;
+    private int _row;
+    private int _column;
 
     protected Field(){
         initialFieldIcon = new ImageIcon(getClass().getResource("gray.png"));
@@ -52,15 +54,29 @@ public class Field extends JPanel implements MouseListener{
         return _fieldFlagged;
     }
 
-    public void setFieldFlagged(boolean flagged){
-        _fieldFlagged = flagged;
-    }
-
-    public static Field createInitialField() {
+    public static Field createInitialField(int row, int column) {
         Field f = new Field();
+        f._row = row;
+        f._column = column;
+
         JLabel lbl = new JLabel(f.initialFieldIcon, JLabel.CENTER);
         f.add(lbl);
         return f;
+    }
+
+    public void revealField(){
+        JLabel lbl = (JLabel)this.getComponent(0);
+        revealedFieldIcon = getFieldIconByType(lbl);
+        lbl.setIcon(revealedFieldIcon);
+        _fieldRevealed = true;
+    }
+
+    public int getRow(){
+        return _row;
+    }
+
+    public int getColumn(){
+        return _column;
     }
 
     @Override
@@ -98,6 +114,7 @@ public class Field extends JPanel implements MouseListener{
 
     private void processLeftClick(){
         JLabel lbl = (JLabel)this.getComponent(0);
+        MinesweeperGame gameForm = (MinesweeperGame) MainAppFrame.getChildForm();
 
         if (_fieldFlagged){
             return;
@@ -105,38 +122,42 @@ public class Field extends JPanel implements MouseListener{
         else if(_type == FieldType.Mine && _fieldRevealed == false){
             _type = FieldType.MineDanger;
             revealField();
-
-            MinesweeperGame appForm = (MinesweeperGame) MainAppFrame.getChildForm();
-            appForm.setGameOver();
+            gameForm.setGameOver(false);
+            return;
         }
         else if(_type == FieldType.Empty){
-            revealField();
             // TODO: reveal all nearby empty fields
+            gameForm.revealEmptyNeighboursFields(this);
         }
         else{
             revealField();
         }
+
+        if (gameForm.isGameWon()){
+            gameForm.setGameOver(true);
+        }
     }
 
     private void processRightClick(){
+        MinesweeperGame gameForm = (MinesweeperGame) MainAppFrame.getChildForm();
         JLabel lbl = (JLabel)this.getComponent(0);
 
         if (_fieldFlagged){
             _fieldFlagged = false;
             lbl.setIcon(initialFieldIcon);
+            gameForm.incrementFlagCount();
         }
         else{
-            _fieldFlagged = true;
-            ImageIcon flagIcon = createFieldFlagIcon(lbl);
-            lbl.setIcon(flagIcon);
+            if (gameForm.getFlagCount() == 0){
+                JOptionPane.showMessageDialog(null, "All flags are used!", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            else{
+                _fieldFlagged = true;
+                ImageIcon flagIcon = createFieldFlagIcon(lbl);
+                lbl.setIcon(flagIcon);
+                gameForm.decrementFlagCount();
+            }
         }
-    }
-
-    public void revealField(){
-        JLabel lbl = (JLabel)this.getComponent(0);
-        revealedFieldIcon = getFieldIconByType(lbl);
-        lbl.setIcon(revealedFieldIcon);
-        _fieldRevealed = true;
     }
 
     private ImageIcon createFieldFlagIcon(JLabel lbl){
@@ -193,4 +214,5 @@ public class Field extends JPanel implements MouseListener{
 
         return new ImageIcon(new ImageIcon(getClass().getResource(iconName)).getImage().getScaledInstance(lblContainer.getWidth(), lblContainer.getHeight(), Image.SCALE_SMOOTH));
     }
+
 }

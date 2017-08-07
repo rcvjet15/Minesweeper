@@ -35,7 +35,7 @@ public class JPanelGrid extends JPanel {
 
         for (int i = 0; i < _rows; i++){
             for (int j = 0; j < _columns; j++){
-                Field field = Field.createInitialField();
+                Field field = Field.createInitialField(i, j);
                 field.setName(i + j + " field");
 
                 field.setFieldType(getFieldTypeEnum(_minefield[i][j]));
@@ -54,6 +54,20 @@ public class JPanelGrid extends JPanel {
         }
     }
 
+    // Get number of (not)revealed fields based on 'revealed' parameter value
+    public int getNumberOfFields(boolean revealed){
+        int fieldCount = 0;
+        Field tmpField;
+        for (int i = 0; i < this.getComponentCount(); i++){
+            if (this.getComponent(i) instanceof Field){
+                tmpField = (Field)this.getComponent(i);
+                if (tmpField.getFieldRevealed() == revealed){
+                    fieldCount++;
+                }
+            }
+        }
+        return fieldCount;
+    }
 
     private Field.FieldType getFieldTypeEnum(int minefieldNum){
         Field.FieldType type = null;
