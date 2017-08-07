@@ -44,6 +44,22 @@ public class JPanelGrid extends JPanel {
         }
     }
 
+    public int[][] getMinefield(){
+        return _minefield;
+    }
+
+    public Field getFieldByPosition(int row, int col){
+        Field f;
+        for (int i = 0; i < this.getComponentCount(); i++){
+            if (this.getComponent(i)  instanceof Field ){
+                f = (Field) this.getComponent(i);
+                if (f.getRow() == row && f.getColumn() == col)
+                return f;
+            }
+        }
+        return null;
+    }
+
     public void showAllFields(){
         Field f;
         for (int i = 0; i < this.getComponentCount(); i++){

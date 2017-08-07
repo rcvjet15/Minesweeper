@@ -114,8 +114,10 @@ public class MinesweeperGame {
         _parentFrame = appFrame;
     }
 
-    // Reveal empty fields by using Flood-fill algorithm
-    public void revealEmptyNeighboursFields(Field field){
+    // Reveal empty fields by using Flood-fill algorithm.
+    public void revealEmptyNeighboursFields(Field field, int targetNum, int replacementNum){
+        // This method will take minefield matrix that was used in creating _minefieldGrid matrix whose elements are numbers.
+        // Empty elements have value 0. Elements that will be revealed will get new value 'replacementNum'.
         if (field.getFieldRevealed()){
             return;
         }
@@ -123,16 +125,61 @@ public class MinesweeperGame {
             return;
         }
 
+
+        int[][] minefieldMatrix = _minefieldGrid.getMinefield();
+
         ArrayList<Field> queue = new ArrayList<Field>();
         queue.add(field);
 
-        for(Field f : queue){
-            Field west = f;
-            Field east = west;
+        for(Field F : queue){
+            Field fWest = F;
+            Field fEast = F;
 
             ArrayList<Field> betweenEastWest = new ArrayList<Field>();
             // Search west
-            for(int i = f.get)
+            int row = fWest.getRow();
+
+            for (int c = fWest.getColumn(); c < minefieldMatrix[row].length; c++){
+                if (minefieldMatrix[row][c] == targetNum){
+                    betweenEastWest.add(_minefieldGrid.getFieldByPosition(row, c));
+                }
+                else{
+                    break;
+                }
+            }
+
+            // Search east
+            row = fEast.getRow();
+
+            for (int c = fEast.getColumn(); c >= 0; c--){
+                if (minefieldMatrix[row][c] == targetNum){
+                    betweenEastWest.add(_minefieldGrid.getFieldByPosition(row, c));
+                }
+                else{
+                    break;
+                }
+            }
+
+            for (Field f : betweenEastWest){
+                minefieldMatrix[f.getRow()][f.getColumn()] = replacementNum;
+                _minefieldGrid.getFieldByPosition(f.getRow(), f.getColumn()).setFieldRevealed(true);
+
+                int column = f.getColumn();
+
+                // Search empty north fields and add them tu queue
+                for (int r = f.getRow(); r >= 0; r--){
+                    if (minefieldMatrix[r][column] == targetNum){
+                        queue.add(_minefieldGrid.getFieldByPosition(r, column));
+                    }
+                }
+
+                // Search empty south fields and add them tu queue
+                for (int r = f.getRow(); r < minefieldMatrix.length; r++){
+                    if (minefieldMatrix[r][column] == targetNum){
+                        queue.add(_minefieldGrid.getFieldByPosition(r, column));
+                    }
+                }
+            }
         }
     }
 

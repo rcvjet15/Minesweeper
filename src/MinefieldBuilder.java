@@ -60,6 +60,7 @@ public class MinefieldBuilder {
         }
     }
 
+    // Method that returns field number, -1 for mine, 0 for empty field and numbers from 1-4 indicating number of surronding mines
     private int getFieldNumber(int row, int col){
         int minesCount = 0;
 
