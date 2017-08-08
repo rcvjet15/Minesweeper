@@ -16,10 +16,8 @@ public class MainAppFrame extends JFrame {
     ArrayList<Component> _frameComponents;
 
     public MainAppFrame(Dimension d){
-        JFrame frame = new JFrame("JPanelGrid");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(_bgColor);
-        _frameComponents = new ArrayList<>();
         this.setSize(d);
         this.setLocationRelativeTo(null);
         this.setFocusable(true);

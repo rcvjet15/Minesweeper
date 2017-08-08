@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by Robi on 06/08/2017.
  */
-public class MinesweeperGame {
+public class MinesweeperGame extends JFrame {
     private JPanel mainPanel;
     private JPanel panelHeader;
     private JLabel lblTimer;
@@ -28,16 +28,25 @@ public class MinesweeperGame {
     private JPanelGrid _minefieldGrid;
     private Timer _timer;
     private MainAppFrame _parentFrame;
+    private Color _bgColor = Color.WHITE;
 
     private Font headerFont = new Font("Curlz MT", Font.BOLD, 20);;
 
-    public MinesweeperGame(){
+    public MinesweeperGame(Dimension d){
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBackground(_bgColor);
+        this.setSize(d);
+        this.setLocationRelativeTo(null);
+        this.setFocusable(true);
+
         setPanelHeader();
         setupMainPanel();
 
         setupTimer();
 
         btnReset.addActionListener(e -> resetGame());
+
+        add(mainPanel);
     }
 
     public JPanel getMainPanel(){

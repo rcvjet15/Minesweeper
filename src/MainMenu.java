@@ -17,7 +17,6 @@ public class MainMenu extends JFrame {
     private Toolkit _toolkit = Toolkit.getDefaultToolkit();
     private Dimension _screenSize = _toolkit.getScreenSize();
     private Point _center = new Point(_screenSize.width / 2, _screenSize.height / 2);
-    Dimension _mainAppFrameDimension;
 
     public MainMenu() {
         setContentPane(contentPane);
@@ -63,17 +62,8 @@ public class MainMenu extends JFrame {
         int width = Settings.getColumns() > 15 ? 850 : 650;
         int height = Settings.getRows() > 15 ? 1000 : 700;
 
-        _mainAppFrameDimension = new Dimension(width, height);
-        _appFrame = new MainAppFrame(_mainAppFrameDimension);
-
-        MinesweeperGame gameForm = new MinesweeperGame();
-        JPanel gameMainPanel = gameForm.getMainPanel();
-        gameForm.setParentFrame(_appFrame);
-
-        _appFrame.setChildForm(gameForm);
-
-        _appFrame.add(gameMainPanel);
-        _appFrame.setVisible(true);
+        MinesweeperGame gameForm = new MinesweeperGame(new Dimension(width, height));
+        gameForm.setVisible(true);
         gameForm.startTimer();
     }
 
