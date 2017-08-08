@@ -48,6 +48,10 @@ public class JPanelGrid extends JPanel {
         return _minefield;
     }
 
+    public void setMinefield(int[][] minefield){
+        _minefield = minefield;
+    }
+
     public Field getFieldByPosition(int row, int col){
         Field f;
         for (int i = 0; i < this.getComponentCount(); i++){
@@ -83,6 +87,17 @@ public class JPanelGrid extends JPanel {
             }
         }
         return fieldCount;
+    }
+
+    // Show matrix in console
+    public void outputMinefield(){
+        for(int i = 0; i < _minefield.length; i++){
+            for(int j = 0; j < _minefield[i].length; j++){
+                System.out.print(_minefield[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     private Field.FieldType getFieldTypeEnum(int minefieldNum){

@@ -8,12 +8,12 @@ public class Settings {
     public static final String FLAG_COUNT_FORMAT = "000";
     public static final String TIMER_FORMAT = "mm:ss";
     public static final String TIMER_DEFAULT_VALUE = "00:00";
-    private static int _rows = 16;
-    private static int _columns = 16;
+    private static int _rows = 10;
+    private static int _columns = 10;
     private static Color _bgColor = new Color(135,	206,	255);
     private static Color _fieldFontColor = Color.yellow;
 //    private static int _minesCount = (_rows * _columns) / 10;
-    private static int _minesCount = 35;
+    private static int _minesCount = 20;
     private static Color _headerFontColor = Color.yellow;
     private static Color _mainButtonsColor = Color.white;
 

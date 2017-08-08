@@ -118,22 +118,16 @@ public class MinesweeperGame {
     public void revealEmptyNeighboursFields(Field field, int targetNum, int replacementNum){
         // This method will take minefield matrix that was used in creating _minefieldGrid matrix whose elements are numbers.
         // Empty elements have value 0. Elements that will be revealed will get new value 'replacementNum'.
-        if (field.getFieldRevealed() == true){
-            return;
-        }
-        else if (field.getFieldFlagged() == true){
-            return;
-        }
 
         int[][] minefieldMatrix = _minefieldGrid.getMinefield();
 
-        if (minefieldMatrix[field.getRow()][field.getColumn()] == replacementNum){
+        if (minefieldMatrix[field.getRow()][field.getColumn()] != targetNum){
             return;
         }
 
         // Must use points because java.util.ConcurrentModificationException will be raised if objects type of Field is used in ArrayList
         ArrayList<Point> queue = new ArrayList<Point>();
-        queue.add(new Point(field.getRow(), field.getColumn()));
+        queue.add(new Point(field.getColumn(), field.getRow()));
 
         for(int i = 0; i < queue.size(); i++){
             Point P = queue.get(i);
@@ -141,33 +135,35 @@ public class MinesweeperGame {
             Point pEast = new Point(P.x, P.y);
 
             // Search west
-            while(pWest.y < minefieldMatrix[P.x].length - 1 && minefieldMatrix[pWest.x][pWest.y] == targetNum){
-                pWest.y += 1;
+            while(pWest.x < minefieldMatrix[P.y].length - 1 && minefieldMatrix[pWest.y][pWest.x] == targetNum){
+                pWest.x += 1;
             }
 
             // Search east
-            while(pEast.y > 0 && minefieldMatrix[pEast.x][pEast.y] == targetNum){
-                pEast.y -= 1;
+            while(pEast.x > 0 && minefieldMatrix[pEast.y][pEast.x] == targetNum){
+                pEast.x -= 1;
             }
 
             // Loop through fields between east and west item
-            for (int c = pEast.y; c <= pWest.y; c++){
-                Point p = new Point(pEast.x, c);
+            for (int col = pEast.x; col <= pWest.x; col++){
+                Point p = new Point(col, P.y);
 
-                minefieldMatrix[p.x][p.y] = replacementNum;
-                _minefieldGrid.getFieldByPosition(p.x, p.y).revealField();
+                minefieldMatrix[p.y][p.x] = replacementNum;
+                _minefieldGrid.getFieldByPosition(p.y, p.x).revealField();
 
-                int row = p.x;
-                int column = p.y;
+
+                int row = p.y;
+                int column = p.x;
 
                 // Check north field
                 if (row > 0){ // Don't go outside of matrix
                     int northRow = row - 1;
                     // If north field is empty add it to the queue
                     if (minefieldMatrix[northRow][column] == targetNum){
-                        queue.add(new Point(northRow, column));
+                        queue.add(new Point(column, northRow));
                     }
-                    else { // Add number field next to empty field
+                    else { // Reveal non empty field (field that golds number of adjacent mines) next to empty field
+                        minefieldMatrix[northRow][column] = replacementNum;
                         _minefieldGrid.getFieldByPosition(northRow, column).revealField();
                     }
                 }
@@ -176,14 +172,17 @@ public class MinesweeperGame {
                     int southRow = row + 1;
                     // If south field is empty add it to the queue
                     if (minefieldMatrix[southRow][column] == targetNum){
-                        queue.add(new Point(southRow, column));
+                        queue.add(new Point(column, southRow));
                     }
-                    else { // Add number field next to empty field
+                    else { // Reveal non empty field (field that golds number of adjacent mines) next to empty field
                         _minefieldGrid.getFieldByPosition(southRow, column).revealField();
                     }
                 }
             }
         }
+        // Update matrix grid in JPanelGrid with new one
+        _minefieldGrid.setMinefield(minefieldMatrix);
+        _minefieldGrid.outputMinefield();
     }
 
     private void resetGame(){

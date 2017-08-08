@@ -127,7 +127,7 @@ public class Field extends JPanel implements MouseListener{
         }
         else if(_type == FieldType.Empty){
             // TODO: reveal all nearby empty fields
-            gameForm.revealEmptyNeighboursFields(this, 0, -2);
+            gameForm.revealEmptyNeighboursFields(this, 0, -10);
         }
         else{
             revealField();
