@@ -113,8 +113,7 @@ public class Field extends JPanel implements MouseListener{
     }
 
     private void processLeftClick(){
-        JLabel lbl = (JLabel)this.getComponent(0);
-        MinesweeperGame gameForm = (MinesweeperGame) MainAppFrame.getChildForm();
+        MinesweeperGame gameForm = getMinesweeperGameFrame();
 
         if (_fieldFlagged){
             return;
@@ -139,7 +138,7 @@ public class Field extends JPanel implements MouseListener{
     }
 
     private void processRightClick(){
-        MinesweeperGame gameForm = (MinesweeperGame) MainAppFrame.getChildForm();
+        MinesweeperGame gameForm = getMinesweeperGameFrame();
         JLabel lbl = (JLabel)this.getComponent(0);
 
         if (_fieldFlagged){
@@ -160,12 +159,17 @@ public class Field extends JPanel implements MouseListener{
         }
     }
 
-    private ImageIcon createFieldFlagIcon(JLabel lbl){
-        return new ImageIcon(new ImageIcon(getClass().getResource("flag.png")).getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
+    private MinesweeperGame getMinesweeperGameFrame(){
+        Component parent = this.getParent();
+
+        while(!(parent instanceof MinesweeperGame)){
+            parent = parent.getParent();
+        }
+        return (MinesweeperGame) parent;
     }
 
-    private ImageIcon createMineDangerIcon(JLabel lbl){
-        return new ImageIcon(new ImageIcon(getClass().getResource("mine_danger.jpg")).getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
+    private ImageIcon createFieldFlagIcon(JLabel lbl){
+        return new ImageIcon(new ImageIcon(getClass().getResource("flag.png")).getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
     }
 
     private ImageIcon getFieldIconByType(JLabel lblContainer){

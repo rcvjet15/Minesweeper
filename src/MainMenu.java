@@ -13,7 +13,6 @@ public class MainMenu extends JFrame {
     private JLabel labelAppTitle;
     private JButton buttonExit;
     private JPanel menuPanel;
-    private MainAppFrame _appFrame;
     private Toolkit _toolkit = Toolkit.getDefaultToolkit();
     private Dimension _screenSize = _toolkit.getScreenSize();
     private Point _center = new Point(_screenSize.width / 2, _screenSize.height / 2);

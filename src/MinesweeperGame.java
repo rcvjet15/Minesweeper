@@ -23,11 +23,9 @@ public class MinesweeperGame extends JFrame {
     private JPanel panelHeader;
     private JLabel lblTimer;
     private JButton btnReset;
-    private JPanel gamePanel;
     private JLabel lblFlagCount;
     private JPanelGrid _minefieldGrid;
     private Timer _timer;
-    private MainAppFrame _parentFrame;
     private Color _bgColor = Color.WHITE;
 
     private Font headerFont = new Font("Curlz MT", Font.BOLD, 20);;
@@ -47,10 +45,6 @@ public class MinesweeperGame extends JFrame {
         btnReset.addActionListener(e -> resetGame());
 
         add(mainPanel);
-    }
-
-    public JPanel getMainPanel(){
-        return this.mainPanel;
     }
 
     public void incrementFlagCount(){
@@ -117,10 +111,6 @@ public class MinesweeperGame extends JFrame {
             return true;
         }
         return false;
-    }
-
-    public void setParentFrame(MainAppFrame appFrame){
-        _parentFrame = appFrame;
     }
 
     // Reveal empty fields by using Flood-fill algorithm.
