@@ -6,6 +6,9 @@ import java.text.DecimalFormat;
  * Created by Robi on 03/08/2017.
  */
 public class Settings extends JFrame{
+    private static final int BACKGROUND_TARGET = 2;
+    private static final int BUTTON_TARGET = 3;
+
     public static final String FLAG_COUNT_FORMAT = "000";
     public static final String TIMER_FORMAT = "mm:ss";
     public static final String TIMER_DEFAULT_VALUE = "00:00";
@@ -24,9 +27,23 @@ public class Settings extends JFrame{
     private JPanel _bodyPanel;
     private JPanel _actionPanel;
     private JButton _buttonOk;
-    private JButton buttonCancel;
+    private JButton _buttonCancel;
     private JPanel _okPanel;
     private JPanel _cancelPanel;
+    private JLabel _lblRows;
+    private JLabel _lblColumns;
+    private JLabel _lblMinesCout;
+    private JSpinner _rowsSpin;
+    private JSpinner _colSpin;
+    private JSpinner _mineSPin;
+    private JLabel lblGbColor;
+    private JPanel _rowPanel;
+    private JPanel _colPanel;
+    private JPanel _minePanel;
+    private JPanel _bgPanel;
+    private JPanel _btnPanel;
+    private JButton _btnBtnClr;
+    private JButton _btnBg;
 
     public static int getRows() {
         return _rows;
@@ -92,14 +109,51 @@ public class Settings extends JFrame{
 
     public Settings(Dimension d){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setBackground(Settings.getBgColor());
-        _bodyPanel.setBackground(Settings.getBgColor());
         this.setSize(d);
         this.setLocationRelativeTo(null);
         this.setFocusable(true);
+        setupVisual();
         add(_mainPanel);
 
-        _okPanel.setSize((int)d.getWidth() / 2, _okPanel.getWidth());
-        _cancelPanel.setSize((int)d.getWidth() / 2, _cancelPanel.getWidth());
+        _btnBg.addActionListener(e -> onChoose(BACKGROUND_TARGET));
+        _btnBg.addActionListener(e -> onChoose(BUTTON_TARGET));
+
+        setResizable(false);
     }
+
+    private void setupVisual(){
+        setBackground(Settings.getBgColor());
+        _mainPanel.setBackground(Settings.getBgColor());
+        _bodyPanel.setBackground(Settings.getBgColor());
+        _buttonOk.setBackground(Settings.getMainButtonsColor());
+        _buttonCancel.setBackground(Settings.getMainButtonsColor());
+        _rowPanel.setBackground(Settings.getMainButtonsColor());
+        _colPanel.setBackground(Settings.getMainButtonsColor());
+        _minePanel.setBackground(Settings.getMainButtonsColor());
+        _bgPanel.setBackground(Settings.getMainButtonsColor());
+        _btnPanel.setBackground(Settings.getMainButtonsColor());
+        _btnBg.setBackground(Settings.getMainButtonsColor());
+        _btnBtnClr.setBackground(Settings.getMainButtonsColor());
+    }
+
+    void onChoose(int target){
+
+        switch (target){
+            case BACKGROUND_TARGET:
+                Color bgClr = JColorChooser.showDialog(this, "Choose Background Color", _bgColor);
+                if (bgClr != null){
+                    _bgColor = bgClr;
+                }
+                break;
+            case BUTTON_TARGET:
+                Color btnClr = JColorChooser.showDialog(this, "Choose Background Color", _mainButtonsColor);
+                if (btnClr != null){
+                    _mainButtonsColor = btnClr;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
 }
