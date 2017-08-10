@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 
 /**
@@ -96,7 +97,7 @@ public class Settings extends JFrame{
 
     public static void setMinesCount(int mines){
         if (mines > (_rows * _columns)){
-            mines = _rows * _columns;
+            mines = (_rows * _columns);
         }
 
         _minesCount = mines;
@@ -120,8 +121,8 @@ public class Settings extends JFrame{
 
         _buttonSave.addActionListener(e -> onSave());
         _buttonCancel.addActionListener(e -> onCancel());
-        _btnBg.addActionListener(e -> onChoose(BACKGROUND_TARGET));
-        _btnBg.addActionListener(e -> onChoose(BUTTON_TARGET));
+        _btnBg.addActionListener(e -> onChoose(e));
+        _btnBtnClr.addActionListener(e -> onChoose(e));
         _rowsSpin.setValue(_rows);
         _colSpin.setValue(_columns);
         _mineSpin.setValue(_minesCount);
@@ -130,12 +131,34 @@ public class Settings extends JFrame{
     }
 
     private void onSave() {
+        if (wf_check() == false){
+            return;
+        }
         _bgColor = _lblBgResult.getBackground();
         _mainButtonsColor = _lblBtnBgResult.getBackground();
         _rows = (int)_rowsSpin.getValue();
         _columns = (int)_colSpin.getValue();
-        _minesCount = (int) _mineSpin.getValue();
+        Settings.setMinesCount((int) _mineSpin.getValue());
         dispose();
+    }
+
+    private boolean wf_check() {
+        if ((int)_rowsSpin.getValue() < 1){
+            JOptionPane.showMessageDialog(null, "Rows number must be greater than 0!", "Settings Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if ((int)_colSpin.getValue() < 1){
+            JOptionPane.showMessageDialog(null, "Columns number must be greater than 0!", "Settings Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if ((int)_mineSpin.getValue() < 1){
+            JOptionPane.showMessageDialog(null, "Mines number must be greater than 0!", "Settings Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 
     private void onCancel() {
@@ -155,23 +178,20 @@ public class Settings extends JFrame{
         _lblBtnBgResult.setBackground(_mainButtonsColor);
     }
 
-    void onChoose(int target){
+    void onChoose(ActionEvent e){
 
-        switch (target){
-            case BACKGROUND_TARGET:
-                Color bgClr = JColorChooser.showDialog(this, "Choose Background Color", _bgColor);
-                if (bgClr != null){
-                    _lblBgResult.setBackground(bgClr);
-                }
-                break;
-            case BUTTON_TARGET:
-                Color btnClr = JColorChooser.showDialog(this, "Choose Background Color", _mainButtonsColor);
-                if (btnClr != null){
-                    _lblBtnBgResult.setBackground(btnClr);
-                }
-                break;
-            default:
-                break;
+        if (e.getSource() == _btnBg){
+
+            Color bgClr = JColorChooser.showDialog(this, "Choose Background Color", _bgColor);
+            if (bgClr != null){
+                _lblBgResult.setBackground(bgClr);
+            }
+        }
+        else if (e.getSource() == _btnBtnClr){
+            Color btnClr = JColorChooser.showDialog(this, "Choose Background Color", _mainButtonsColor);
+            if (btnClr != null){
+                _lblBtnBgResult.setBackground(btnClr);
+            }
         }
     }
 
