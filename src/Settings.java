@@ -16,7 +16,7 @@ public class Settings extends JDialog{
     private static int _rows = 15;
     private static int _columns = 15;
     private static Color _bgColor = new Color(135,	206,	255);
-    private static Color _mainTextColor = new Color(187,	183,	39);
+    private static Color _mainTextColor = Color.darkGray;
     private static int _minesCount = 35;
     private static Color _headerFontColor = Color.yellow;
     private static Color _mainButtonsColor = Color.white;
@@ -183,6 +183,7 @@ public class Settings extends JDialog{
         _btnBtnClr.setBackground(_mainButtonsColor);
         _lblBgResult.setBackground(_bgColor);
         _lblBtnBgResult.setBackground(_mainButtonsColor);
+        _titleLabel.setForeground(_mainTextColor);
     }
 
     void onChoose(ActionEvent e){

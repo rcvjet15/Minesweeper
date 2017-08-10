@@ -194,6 +194,10 @@ public class MinesweeperGame extends JFrame {
 //
     }
 
+    private void setupVisual(){
+        setPanelHeader();
+        setupMainPanel();
+    }
     private void setupMainPanel(){
         this.mainPanel.setBackground(Settings.getBgColor());
         _minefieldGrid = new JPanelGrid();
@@ -203,12 +207,12 @@ public class MinesweeperGame extends JFrame {
     private void setPanelHeader(){
         panelHeader.setBackground(Settings.getBgColor());
         lblTimer.setFont(headerFont);
-        lblTimer.setForeground(Settings.getHeaderFontColor());
+        lblTimer.setForeground(Settings.getMainTextColor());
         lblTimer.setBackground(Color.black);
         lblTimer.setText(Settings.TIMER_DEFAULT_VALUE);
 
         lblFlagCount.setFont(headerFont);
-        lblFlagCount.setForeground(Settings.getHeaderFontColor());
+        lblFlagCount.setForeground(Settings.getMainTextColor());
         lblFlagCount.setBackground(Color.black);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
     }
