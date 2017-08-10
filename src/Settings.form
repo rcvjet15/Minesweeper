@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Settings">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="BorderLayout">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="_mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
     </constraints>
     <properties/>
     <border type="none"/>
-    <children/>
+    <children>
+      <grid id="7dd57" binding="_headerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-1444612"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="512f3" class="javax.swing.JLabel" binding="_titleLabel">
+            <constraints border-constraint="North"/>
+            <properties>
+              <background color="-1312770"/>
+              <focusable value="false"/>
+              <font name="AR BERKLEY" size="28" style="1"/>
+              <foreground color="-4475630"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <preferredSize width="74" height="40"/>
+              <text value="Settings"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="4e284" binding="_bodyPanel" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
+      <grid id="84288" binding="_actionPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="South"/>
+        <properties>
+          <background color="-1312770"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="2fde9" binding="_okPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="West"/>
+            <properties>
+              <preferredSize width="100" height="32"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="946a2" class="javax.swing.JButton" binding="_buttonOk">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-4473925"/>
+                  <horizontalAlignment value="0"/>
+                  <preferredSize width="200" height="32"/>
+                  <text value="Button"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="a84ce" binding="_cancelPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="East"/>
+            <properties>
+              <preferredSize width="100" height="32"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="417f9" class="javax.swing.JButton" binding="buttonCancel">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-4473925"/>
+                  <text value="Button"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
   </grid>
 </form>

@@ -1,18 +1,15 @@
-import javafx.scene.control.Alert;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Set;
 
 public class MainMenu extends JFrame {
     private JPanel contentPane;
-    private JButton buttonStart;
-    private JButton buttonAbout;
-    private JButton buttonSettings;
-    private JLabel labelAppTitle;
-    private JButton buttonExit;
-    private JPanel menuPanel;
+    private JButton _buttonSettings;
+    private JButton _buttonStart;
+    private JButton _buttonExit;
+    private JLabel _titleLabel;
+    private JPanel _menuPanel;
+    private JPanel _panelHeader;
     private Toolkit _toolkit = Toolkit.getDefaultToolkit();
     private Dimension _screenSize = _toolkit.getScreenSize();
     private Point _center = new Point(_screenSize.width / 2, _screenSize.height / 2);
@@ -20,13 +17,12 @@ public class MainMenu extends JFrame {
     public MainMenu() {
         setContentPane(contentPane);
         setLocation(_center);
-        getRootPane().setDefaultButton(buttonStart);
+        getRootPane().setDefaultButton(_buttonStart);
         setupVisual();
 
-        buttonStart.addActionListener(e -> onStart());
-        buttonSettings.addActionListener(e -> onSettings());
-        buttonAbout.addActionListener(e -> onAbout());
-        buttonExit.addActionListener(e -> onExit());
+        _buttonStart.addActionListener(e -> onStart());
+        _buttonSettings.addActionListener(e -> onSettings());
+        _buttonExit.addActionListener(e -> onExit());
 //
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -46,11 +42,11 @@ public class MainMenu extends JFrame {
 
     private void setupVisual(){
         contentPane.setBackground(Settings.getBgColor());
-        menuPanel.setBackground(Settings.getBgColor());
+        _menuPanel.setBackground(Settings.getBgColor());
 
-        for (int i = 0; i < menuPanel.getComponentCount(); i++){
-            if (menuPanel.getComponent(i) instanceof JButton){
-                JButton btn = (JButton)menuPanel.getComponent(i);
+        for (int i = 0; i < _menuPanel.getComponentCount(); i++){
+            if (_menuPanel.getComponent(i) instanceof JButton){
+                JButton btn = (JButton) _menuPanel.getComponent(i);
                 btn.setBackground(Settings.getMainButtonsColor());
             }
         }
@@ -67,11 +63,11 @@ public class MainMenu extends JFrame {
     }
 
     private void onSettings(){
+        int width = 300;
+        int height = 500;
 
-    }
-
-    private void onAbout(){
-
+        Settings settingsForm = new Settings(new Dimension(width, height));
+        settingsForm.setVisible(true);
     }
 
     private void onExit() {

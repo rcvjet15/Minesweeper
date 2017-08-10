@@ -1,10 +1,11 @@
+import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 
 /**
  * Created by Robi on 03/08/2017.
  */
-public class Settings {
+public class Settings extends JFrame{
     public static final String FLAG_COUNT_FORMAT = "000";
     public static final String TIMER_FORMAT = "mm:ss";
     public static final String TIMER_DEFAULT_VALUE = "00:00";
@@ -12,10 +13,20 @@ public class Settings {
     private static int _columns = 15;
     private static Color _bgColor = new Color(135,	206,	255);
     private static Color _fieldFontColor = Color.yellow;
-//    private static int _minesCount = (_rows * _columns) / 10;
     private static int _minesCount = 35;
     private static Color _headerFontColor = Color.yellow;
     private static Color _mainButtonsColor = Color.white;
+
+    // Settings form controls
+    private JPanel _mainPanel;
+    private JPanel _headerPanel;
+    private JLabel _titleLabel;
+    private JPanel _bodyPanel;
+    private JPanel _actionPanel;
+    private JButton _buttonOk;
+    private JButton buttonCancel;
+    private JPanel _okPanel;
+    private JPanel _cancelPanel;
 
     public static int getRows() {
         return _rows;
@@ -77,5 +88,18 @@ public class Settings {
 
     public static Color getMainButtonsColor(){
         return _mainButtonsColor;
+    }
+
+    public Settings(Dimension d){
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setBackground(Settings.getBgColor());
+        _bodyPanel.setBackground(Settings.getBgColor());
+        this.setSize(d);
+        this.setLocationRelativeTo(null);
+        this.setFocusable(true);
+        add(_mainPanel);
+
+        _okPanel.setSize((int)d.getWidth() / 2, _okPanel.getWidth());
+        _cancelPanel.setSize((int)d.getWidth() / 2, _cancelPanel.getWidth());
     }
 }
