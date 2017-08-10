@@ -26,7 +26,7 @@ public class Settings extends JFrame{
     private JLabel _titleLabel;
     private JPanel _bodyPanel;
     private JPanel _actionPanel;
-    private JButton _buttonOk;
+    private JButton _buttonSave;
     private JButton _buttonCancel;
     private JPanel _okPanel;
     private JPanel _cancelPanel;
@@ -35,7 +35,7 @@ public class Settings extends JFrame{
     private JLabel _lblMinesCout;
     private JSpinner _rowsSpin;
     private JSpinner _colSpin;
-    private JSpinner _mineSPin;
+    private JSpinner _mineSpin;
     private JLabel lblGbColor;
     private JPanel _rowPanel;
     private JPanel _colPanel;
@@ -44,6 +44,9 @@ public class Settings extends JFrame{
     private JPanel _btnPanel;
     private JButton _btnBtnClr;
     private JButton _btnBg;
+    private JLabel _lblBgResult;
+    private JLabel _lblBtnBgResult;
+    private JLabel _lbl;
 
     public static int getRows() {
         return _rows;
@@ -108,32 +111,48 @@ public class Settings extends JFrame{
     }
 
     public Settings(Dimension d){
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(d);
         this.setLocationRelativeTo(null);
         this.setFocusable(true);
         setupVisual();
         add(_mainPanel);
 
+        _buttonSave.addActionListener(e -> onSave());
+        _buttonCancel.addActionListener(e -> onCancel());
         _btnBg.addActionListener(e -> onChoose(BACKGROUND_TARGET));
         _btnBg.addActionListener(e -> onChoose(BUTTON_TARGET));
+        _rowsSpin.setValue(_rows);
+        _colSpin.setValue(_columns);
+        _mineSpin.setValue(_minesCount);
 
         setResizable(false);
     }
 
+    private void onSave() {
+        _bgColor = _lblBgResult.getBackground();
+        _mainButtonsColor = _lblBtnBgResult.getBackground();
+        _rows = (int)_rowsSpin.getValue();
+        _columns = (int)_colSpin.getValue();
+        _minesCount = (int) _mineSpin.getValue();
+        dispose();
+    }
+
+    private void onCancel() {
+        dispose();
+    }
+
+
     private void setupVisual(){
-        setBackground(Settings.getBgColor());
-        _mainPanel.setBackground(Settings.getBgColor());
-        _bodyPanel.setBackground(Settings.getBgColor());
-        _buttonOk.setBackground(Settings.getMainButtonsColor());
-        _buttonCancel.setBackground(Settings.getMainButtonsColor());
-        _rowPanel.setBackground(Settings.getMainButtonsColor());
-        _colPanel.setBackground(Settings.getMainButtonsColor());
-        _minePanel.setBackground(Settings.getMainButtonsColor());
-        _bgPanel.setBackground(Settings.getMainButtonsColor());
-        _btnPanel.setBackground(Settings.getMainButtonsColor());
-        _btnBg.setBackground(Settings.getMainButtonsColor());
-        _btnBtnClr.setBackground(Settings.getMainButtonsColor());
+        setBackground(_bgColor);
+        _mainPanel.setBackground(_bgColor);
+        _bodyPanel.setBackground(_bgColor);
+        _buttonSave.setBackground(_mainButtonsColor);
+        _buttonCancel.setBackground(_mainButtonsColor);
+        _btnBg.setBackground(_mainButtonsColor);
+        _btnBtnClr.setBackground(_mainButtonsColor);
+        _lblBgResult.setBackground(_bgColor);
+        _lblBtnBgResult.setBackground(_mainButtonsColor);
     }
 
     void onChoose(int target){
@@ -142,13 +161,13 @@ public class Settings extends JFrame{
             case BACKGROUND_TARGET:
                 Color bgClr = JColorChooser.showDialog(this, "Choose Background Color", _bgColor);
                 if (bgClr != null){
-                    _bgColor = bgClr;
+                    _lblBgResult.setBackground(bgClr);
                 }
                 break;
             case BUTTON_TARGET:
                 Color btnClr = JColorChooser.showDialog(this, "Choose Background Color", _mainButtonsColor);
                 if (btnClr != null){
-                    _mainButtonsColor = btnClr;
+                    _lblBtnBgResult.setBackground(btnClr);
                 }
                 break;
             default:

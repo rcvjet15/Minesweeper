@@ -41,15 +41,22 @@
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="9a8f6" class="javax.swing.JLabel" binding="_lblRows">
                 <constraints border-constraint="West"/>
                 <properties>
+                  <alignmentX value="0.0"/>
                   <background color="-4475630"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="12"/>
-                  <preferredSize width="150" height="16"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
                   <text value="Rows"/>
                 </properties>
               </component>
@@ -59,6 +66,14 @@
                   <preferredSize width="70" height="26"/>
                 </properties>
               </component>
+              <grid id="12beb" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
             </children>
           </grid>
           <vspacer id="ade3c">
@@ -70,14 +85,21 @@
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="12fb" class="javax.swing.JLabel" binding="_lblColumns">
                 <constraints border-constraint="West"/>
                 <properties>
+                  <alignmentX value="0.0"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="12"/>
-                  <preferredSize width="150" height="16"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
                   <text value="Columns"/>
                 </properties>
               </component>
@@ -87,44 +109,75 @@
                   <preferredSize width="70" height="26"/>
                 </properties>
               </component>
+              <grid id="a7c7d" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
             </children>
           </grid>
           <grid id="ad0fc" binding="_minePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="f7479" class="javax.swing.JLabel" binding="_lblMinesCout">
                 <constraints border-constraint="West"/>
                 <properties>
+                  <alignmentX value="0.0"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="12"/>
-                  <preferredSize width="150" height="16"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
                   <text value="Mines"/>
                 </properties>
               </component>
-              <component id="aeab" class="javax.swing.JSpinner" binding="_mineSPin">
+              <component id="aeab" class="javax.swing.JSpinner" binding="_mineSpin">
                 <constraints border-constraint="East"/>
                 <properties>
                   <preferredSize width="70" height="26"/>
                 </properties>
               </component>
+              <grid id="327aa" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
             </children>
           </grid>
           <grid id="5a6fa" binding="_bgPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="7f720" class="javax.swing.JLabel" binding="lblGbColor">
                 <constraints border-constraint="West"/>
                 <properties>
+                  <alignmentX value="0.0"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="12"/>
-                  <preferredSize width="150" height="16"/>
-                  <text value="Background Color"/>
+                  <foreground color="-11579569"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
+                  <text value="Background"/>
                 </properties>
               </component>
               <component id="f1842" class="javax.swing.JButton" binding="_btnBg">
@@ -133,20 +186,46 @@
                   <text value="Choose"/>
                 </properties>
               </component>
+              <grid id="36bcc" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                  <visible value="true"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="ff215" class="javax.swing.JLabel" binding="_lblBgResult">
+                    <constraints border-constraint="East"/>
+                    <properties>
+                      <background color="-4475097"/>
+                      <opaque value="true"/>
+                      <preferredSize width="30" height="0"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
             </children>
           </grid>
           <grid id="15816" binding="_btnPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="28ceb" class="javax.swing.JLabel">
                 <constraints border-constraint="West"/>
                 <properties>
+                  <alignmentX value="0.0"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="12"/>
-                  <preferredSize width="150" height="16"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
                   <text value="Buttons Color"/>
                 </properties>
               </component>
@@ -156,6 +235,39 @@
                   <text value="Choose"/>
                 </properties>
               </component>
+              <grid id="c31c9" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="20738" class="javax.swing.JLabel">
+                    <constraints border-constraint="East"/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <grid id="97beb" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="bf5e5" class="javax.swing.JLabel" binding="_lblBtnBgResult">
+                        <constraints border-constraint="East"/>
+                        <properties>
+                          <background color="-4475097"/>
+                          <opaque value="true"/>
+                          <preferredSize width="30" height="0"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
             </children>
           </grid>
         </children>
@@ -174,7 +286,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="946a2" class="javax.swing.JButton" binding="_buttonOk">
+              <component id="946a2" class="javax.swing.JButton" binding="_buttonSave">
                 <constraints border-constraint="Center"/>
                 <properties>
                   <background color="-4473925"/>

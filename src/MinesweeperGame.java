@@ -31,7 +31,7 @@ public class MinesweeperGame extends JFrame {
     private Font headerFont = new Font("Curlz MT", Font.BOLD, 20);;
 
     public MinesweeperGame(Dimension d){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBackground(_bgColor);
         this.setSize(d);
         this.setLocationRelativeTo(null);
