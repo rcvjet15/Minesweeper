@@ -31,7 +31,7 @@
           </component>
         </children>
       </grid>
-      <grid id="4e284" binding="_bodyPanel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="4e284" binding="_bodyPanel" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="Center"/>
         <properties/>
@@ -78,7 +78,7 @@
           </grid>
           <vspacer id="ade3c">
             <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
           <grid id="48eb8" binding="_colPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -242,12 +242,6 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="20738" class="javax.swing.JLabel">
-                    <constraints border-constraint="East"/>
-                    <properties>
-                      <text value=""/>
-                    </properties>
-                  </component>
                   <grid id="97beb" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties>
@@ -256,6 +250,63 @@
                     <border type="none"/>
                     <children>
                       <component id="bf5e5" class="javax.swing.JLabel" binding="_lblBtnBgResult">
+                        <constraints border-constraint="East"/>
+                        <properties>
+                          <background color="-4475097"/>
+                          <opaque value="true"/>
+                          <preferredSize width="30" height="0"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="b0ddd" binding="_lblPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <focusable value="false"/>
+              <opaque value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="62be0" class="javax.swing.JLabel" binding="_textColor">
+                <constraints border-constraint="West"/>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <focusable value="false"/>
+                  <font name="Arial Black" size="12"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="2"/>
+                  <preferredSize width="120" height="16"/>
+                  <text value="Text Color"/>
+                </properties>
+              </component>
+              <component id="2c63c" class="javax.swing.JButton" binding="_btnLblClr">
+                <constraints border-constraint="East"/>
+                <properties>
+                  <text value="Choose"/>
+                </properties>
+              </component>
+              <grid id="2fe76" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="6eba2" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="285f9" class="javax.swing.JLabel" binding="_lblTxtResult">
                         <constraints border-constraint="East"/>
                         <properties>
                           <background color="-4475097"/>

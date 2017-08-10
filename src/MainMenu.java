@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Set;
 
 public class MainMenu extends JFrame {
     private JPanel contentPane;
@@ -43,7 +44,7 @@ public class MainMenu extends JFrame {
     private void setupVisual(){
         contentPane.setBackground(Settings.getBgColor());
         _menuPanel.setBackground(Settings.getBgColor());
-
+        _titleLabel.setForeground(Settings.getMainTextColor());
         for (int i = 0; i < _menuPanel.getComponentCount(); i++){
             if (_menuPanel.getComponent(i) instanceof JButton){
                 JButton btn = (JButton) _menuPanel.getComponent(i);
@@ -68,6 +69,8 @@ public class MainMenu extends JFrame {
 
         Settings settingsForm = new Settings(new Dimension(width, height));
         settingsForm.setVisible(true);
+
+        setupVisual();
     }
 
     private void onExit() {

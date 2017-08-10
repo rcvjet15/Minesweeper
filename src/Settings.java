@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 /**
  * Created by Robi on 03/08/2017.
  */
-public class Settings extends JFrame{
+public class Settings extends JDialog{
     private static final int BACKGROUND_TARGET = 2;
     private static final int BUTTON_TARGET = 3;
 
@@ -16,7 +16,7 @@ public class Settings extends JFrame{
     private static int _rows = 15;
     private static int _columns = 15;
     private static Color _bgColor = new Color(135,	206,	255);
-    private static Color _fieldFontColor = Color.yellow;
+    private static Color _mainTextColor = new Color(187,	183,	39);
     private static int _minesCount = 35;
     private static Color _headerFontColor = Color.yellow;
     private static Color _mainButtonsColor = Color.white;
@@ -47,6 +47,10 @@ public class Settings extends JFrame{
     private JButton _btnBg;
     private JLabel _lblBgResult;
     private JLabel _lblBtnBgResult;
+    private JPanel _lblPanel;
+    private JLabel _textColor;
+    private JLabel _lblTxtResult;
+    private JButton _btnLblClr;
     private JLabel _lbl;
 
     public static int getRows() {
@@ -81,9 +85,9 @@ public class Settings extends JFrame{
         _bgColor = color;
     }
 
-    public static Color getFieldFontColor() { return _fieldFontColor ; }
+    public static Color getMainTextColor() { return _mainTextColor ; }
 
-    public static void setFieldFontColor(Color color) { _fieldFontColor  = color; }
+    public static void setMainTextColor(Color color) { _mainTextColor   = color; }
 
     public static int getMinesCount(){
         return _minesCount;
@@ -112,6 +116,7 @@ public class Settings extends JFrame{
     }
 
     public Settings(Dimension d){
+        setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(d);
         this.setLocationRelativeTo(null);
@@ -123,6 +128,7 @@ public class Settings extends JFrame{
         _buttonCancel.addActionListener(e -> onCancel());
         _btnBg.addActionListener(e -> onChoose(e));
         _btnBtnClr.addActionListener(e -> onChoose(e));
+        _btnLblClr.addActionListener(e -> onChoose(e));
         _rowsSpin.setValue(_rows);
         _colSpin.setValue(_columns);
         _mineSpin.setValue(_minesCount);
@@ -136,6 +142,7 @@ public class Settings extends JFrame{
         }
         _bgColor = _lblBgResult.getBackground();
         _mainButtonsColor = _lblBtnBgResult.getBackground();
+        _mainTextColor = _lblTxtResult.getBackground();
         _rows = (int)_rowsSpin.getValue();
         _columns = (int)_colSpin.getValue();
         Settings.setMinesCount((int) _mineSpin.getValue());
@@ -191,6 +198,12 @@ public class Settings extends JFrame{
             Color btnClr = JColorChooser.showDialog(this, "Choose Background Color", _mainButtonsColor);
             if (btnClr != null){
                 _lblBtnBgResult.setBackground(btnClr);
+            }
+        }
+        else if (e.getSource() == _btnLblClr){
+            Color txtClr = JColorChooser.showDialog(this, "Choose Background Color", _mainTextColor);
+            if (txtClr != null){
+                _lblTxtResult.setBackground(txtClr);
             }
         }
     }
