@@ -118,10 +118,14 @@ public class Field extends JPanel implements MouseListener{
         if (_fieldFlagged){
             return;
         }
-        else if(_type == FieldType.Mine && _fieldRevealed == false){
+
+        gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+
+        if(_type == FieldType.Mine && _fieldRevealed == false){
             _type = FieldType.MineDanger;
             revealField();
             gameForm.setGameOver(false);
+            gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             return;
         }
         else if(_type == FieldType.Empty){
@@ -135,6 +139,7 @@ public class Field extends JPanel implements MouseListener{
         if (gameForm.isGameWon()){
             gameForm.setGameOver(true);
         }
+        gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     private void processRightClick(){
