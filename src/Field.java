@@ -20,6 +20,7 @@ public class Field extends JPanel implements MouseListener{
     private boolean _fieldFlagged;
     private int _row;
     private int _column;
+    private MinesweeperGame _gameForm;
 
     protected Field(){
         initialFieldIcon = new ImageIcon(getClass().getResource("gray.png"));
@@ -86,6 +87,8 @@ public class Field extends JPanel implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
+        _gameForm = getMinesweeperGameFrame();
+        
         if (_fieldRevealed){
             return;
         }
@@ -94,6 +97,11 @@ public class Field extends JPanel implements MouseListener{
         }
         else if(SwingUtilities.isRightMouseButton(e)){
             processRightClick();
+        }
+
+        if (_gameForm.getFirstFieldRevealed() == false){
+            _gameForm.setFirstFieldRevealed(true);
+            _gameForm.startTimer();
         }
     }
 
@@ -113,33 +121,31 @@ public class Field extends JPanel implements MouseListener{
     }
 
     private void processLeftClick(){
-        MinesweeperGame gameForm = getMinesweeperGameFrame();
 
         if (_fieldFlagged){
             return;
         }
 
-        gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        _gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 
         if(_type == FieldType.Mine && _fieldRevealed == false){
             _type = FieldType.MineDanger;
             revealField();
-            gameForm.setGameOver(false);
-            gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+            _gameForm.setGameOver(false);
+            _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             return;
         }
         else if(_type == FieldType.Empty){
-            // TODO: reveal all nearby empty fields
-            gameForm.revealEmptyNeighboursFields(this, 0, -10);
+            _gameForm.revealEmptyNeighboursFields(this, 0, -10);
         }
         else{
             revealField();
         }
 
-        if (gameForm.isGameWon()){
-            gameForm.setGameOver(true);
+        if (_gameForm.isGameWon()){
+            _gameForm.setGameOver(true);
         }
-        gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     private void processRightClick(){

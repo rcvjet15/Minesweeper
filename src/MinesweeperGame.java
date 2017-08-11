@@ -27,7 +27,7 @@ public class MinesweeperGame extends JFrame {
     private JPanelGrid _minefieldGrid;
     private Timer _timer;
     private Color _bgColor = Color.WHITE;
-
+    private boolean _firstFieldRevealed = false; // Used to check if first field is revealed to start timer after mouse click on first field
     private Font headerFont = new Font("Curlz MT", Font.BOLD, 20);;
 
     public MinesweeperGame(Dimension d){
@@ -37,8 +37,7 @@ public class MinesweeperGame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setFocusable(true);
 
-        setPanelHeader();
-        setupMainPanel();
+        setupVisual();
 
         setupTimer();
 
@@ -46,6 +45,15 @@ public class MinesweeperGame extends JFrame {
 
         add(mainPanel);
     }
+
+    public boolean getFirstFieldRevealed(){
+        return _firstFieldRevealed;
+    }
+
+    public void setFirstFieldRevealed(boolean revealed){
+        _firstFieldRevealed = revealed;
+    }
+
 
     public void incrementFlagCount(){
         DecimalFormat formatter = new DecimalFormat(Settings.FLAG_COUNT_FORMAT);
@@ -189,15 +197,16 @@ public class MinesweeperGame extends JFrame {
         lblTimer.setText(Settings.TIMER_DEFAULT_VALUE);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
 
-//       mainPanel.removeAll();
-//       _parentFrame.removeAll();
-//
+        _minefieldGrid.setVisible(false);
+        setupVisual();
+        _firstFieldRevealed = false;
     }
 
     private void setupVisual(){
         setPanelHeader();
         setupMainPanel();
     }
+
     private void setupMainPanel(){
         this.mainPanel.setBackground(Settings.getBgColor());
         _minefieldGrid = new JPanelGrid();

@@ -60,7 +60,6 @@ public class MainMenu extends JFrame {
 
         MinesweeperGame gameForm = new MinesweeperGame(new Dimension(width, height));
         gameForm.setVisible(true);
-        gameForm.startTimer();
     }
 
     private void onSettings(){

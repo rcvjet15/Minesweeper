@@ -17,6 +17,7 @@ public class JPanelGrid extends JPanel {
     private MinefieldBuilder _builder;
     private int[][] _minefield;
 
+
     public JPanelGrid(){
         _rows = Settings.getRows();
         _columns = Settings.getColumns();
