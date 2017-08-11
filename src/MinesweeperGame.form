@@ -29,18 +29,6 @@
               <text value="00:00"/>
             </properties>
           </component>
-          <component id="ddc9d" class="javax.swing.JButton" binding="btnReset">
-            <constraints border-constraint="Center"/>
-            <properties>
-              <borderPainted value="false"/>
-              <contentAreaFilled value="true"/>
-              <name value="resetBtn"/>
-              <opaque value="true"/>
-              <preferredSize width="30" height="32"/>
-              <selected value="false"/>
-              <text value="Button"/>
-            </properties>
-          </component>
           <component id="befd4" class="javax.swing.JLabel" binding="lblFlagCount">
             <constraints border-constraint="East"/>
             <properties>
@@ -54,6 +42,24 @@
               <text value="Label"/>
             </properties>
           </component>
+          <grid id="955de" binding="panelBtnReset" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <opaque value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="f0663" class="javax.swing.JButton" binding="btnReset">
+                <constraints/>
+                <properties>
+                  <label value=""/>
+                  <margin top="2" left="14" bottom="2" right="14"/>
+                  <opaque value="true"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
       <hspacer id="e2552">

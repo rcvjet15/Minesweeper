@@ -87,21 +87,27 @@ public class Field extends JPanel implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
+        // Cannot set in constructor because MinesweeperGame is not visible
         _gameForm = getMinesweeperGameFrame();
-        
-        if (_fieldRevealed){
-            return;
-        }
-        else if(SwingUtilities.isLeftMouseButton(e)){
-            processLeftClick();
-        }
-        else if(SwingUtilities.isRightMouseButton(e)){
-            processRightClick();
-        }
 
-        if (_gameForm.getFirstFieldRevealed() == false){
-            _gameForm.setFirstFieldRevealed(true);
-            _gameForm.startTimer();
+        try {
+            if (_fieldRevealed) {
+                return;
+            } else if (SwingUtilities.isLeftMouseButton(e)) {
+                _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Pressed);
+                processLeftClick();
+            } else if (SwingUtilities.isRightMouseButton(e)) {
+                _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Pressed);
+                processRightClick();
+            }
+
+            if (_gameForm.getFirstFieldRevealed() == false) {
+                _gameForm.setFirstFieldRevealed(true);
+                _gameForm.startTimer();
+            }
+            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Normal);
+        } catch (GameOverException exc){
+
         }
     }
 
@@ -120,7 +126,7 @@ public class Field extends JPanel implements MouseListener{
 
     }
 
-    private void processLeftClick(){
+    private void processLeftClick() throws GameOverException {
 
         if (_fieldFlagged){
             return;
@@ -129,11 +135,14 @@ public class Field extends JPanel implements MouseListener{
         _gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
 
         if(_type == FieldType.Mine && _fieldRevealed == false){
+            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.GameFail);
+
             _type = FieldType.MineDanger;
             revealField();
             _gameForm.setGameOver(false);
             _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            return;
+
+            throw new GameOverException("GAME OVER");
         }
         else if(_type == FieldType.Empty){
             _gameForm.revealEmptyNeighboursFields(this, 0, -10);

@@ -16,14 +16,16 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * Created by Robi on 06/08/2017.
+ * Created by Ivana on 06/08/2017.
  */
 public class MinesweeperGame extends JFrame {
+    public static enum BtnResetImgType { Normal, Pressed, GameFail, GameSuccess };
     private JPanel mainPanel;
     private JPanel panelHeader;
     private JLabel lblTimer;
     private JButton btnReset;
     private JLabel lblFlagCount;
+    private JPanel panelBtnReset;
     private JPanelGrid _minefieldGrid;
     private Timer _timer;
     private Color _bgColor = Color.WHITE;
@@ -215,6 +217,7 @@ public class MinesweeperGame extends JFrame {
 
     private void setPanelHeader(){
         panelHeader.setBackground(Settings.getBgColor());
+        panelBtnReset.setBackground(Settings.getMainButtonsColor());
         lblTimer.setFont(headerFont);
         lblTimer.setForeground(Settings.getMainTextColor());
         lblTimer.setBackground(Color.black);
@@ -224,5 +227,34 @@ public class MinesweeperGame extends JFrame {
         lblFlagCount.setForeground(Settings.getMainTextColor());
         lblFlagCount.setBackground(Color.black);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
+
+        setBtnResetImage(BtnResetImgType.Normal);
+    }
+
+    public void setBtnResetImage(BtnResetImgType type){
+        int width = 30;
+        int height = 30;
+
+        String iconName = null;
+
+        switch (type){
+            case Normal:
+                iconName = "face_normal.jpg";
+                break;
+            case Pressed:
+                iconName = "face_clicked.png";
+                break;
+            case GameSuccess:
+                iconName = "face_game_success.png";
+                break;
+            case GameFail:
+                iconName = "face_game_fail.png";
+                break;
+        }
+
+        ImageIcon faceIcon = new ImageIcon(new ImageIcon(getClass().getResource(iconName)).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        btnReset.setIcon(null);
+        btnReset.setIcon(faceIcon);
+//        btnReset.setSize(20, 30);
     }
 }
