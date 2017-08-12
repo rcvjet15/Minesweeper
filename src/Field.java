@@ -87,17 +87,18 @@ public class Field extends JPanel implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (_fieldRevealed) {
+            return;
+        }
         // Cannot set in constructor because MinesweeperGame is not visible
         _gameForm = getMinesweeperGameFrame();
+        _gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Pressed);
 
         try {
-            if (_fieldRevealed) {
-                return;
-            } else if (SwingUtilities.isLeftMouseButton(e)) {
-                _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Pressed);
+            if (SwingUtilities.isLeftMouseButton(e)) {
                 processLeftClick();
             } else if (SwingUtilities.isRightMouseButton(e)) {
-                _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Pressed);
                 processRightClick();
             }
 
@@ -105,15 +106,18 @@ public class Field extends JPanel implements MouseListener{
                 _gameForm.setFirstFieldRevealed(true);
                 _gameForm.startTimer();
             }
-            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Normal);
+//            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Normal);
         } catch (GameOverException exc){
 
         }
+        _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        if (_gameForm != null){
+            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.Normal);
+        }
     }
 
     @Override
@@ -132,17 +136,14 @@ public class Field extends JPanel implements MouseListener{
             return;
         }
 
-        _gameForm.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-
         if(_type == FieldType.Mine && _fieldRevealed == false){
             _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.GameFail);
 
             _type = FieldType.MineDanger;
             revealField();
             _gameForm.setGameOver(false);
-            _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
-            throw new GameOverException("GAME OVER");
+            throw new GameOverException("GAME OVER FAIL");
         }
         else if(_type == FieldType.Empty){
             _gameForm.revealEmptyNeighboursFields(this, 0, -10);
@@ -152,9 +153,10 @@ public class Field extends JPanel implements MouseListener{
         }
 
         if (_gameForm.isGameWon()){
+            _gameForm.setBtnResetImage(MinesweeperGame.BtnResetImgType.GameSuccess);
             _gameForm.setGameOver(true);
+            throw new GameOverException("GAME OVER SUCCESS");
         }
-        _gameForm.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     private void processRightClick(){

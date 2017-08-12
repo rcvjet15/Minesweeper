@@ -228,6 +228,7 @@ public class MinesweeperGame extends JFrame {
         lblFlagCount.setBackground(Color.black);
         lblFlagCount.setText(Settings.getMinesCountFormatted());
 
+        btnReset.setBackground(Settings.getMainButtonsColor());
         setBtnResetImage(BtnResetImgType.Normal);
     }
 
@@ -239,7 +240,7 @@ public class MinesweeperGame extends JFrame {
 
         switch (type){
             case Normal:
-                iconName = "face_normal.jpg";
+                iconName = "face_normal.png";
                 break;
             case Pressed:
                 iconName = "face_clicked.png";
