@@ -3,9 +3,6 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.Set;
 
-/**
- * Created by Robi on 03/08/2017.
- */
 @SuppressWarnings("serial")
 public class JPanelGrid extends JPanel {
     public static final String GRID_NAME = "Minefield";

@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-/**
- * Created by Robi on 05/08/2017.
- */
 public class MinefieldBuilder {
     private int[][] _mineField;
     private ArrayList<Integer> _minesPosition;

@@ -6,9 +6,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Set;
 
-/**
- * Created by Robi on 03/08/2017.
- */
 public class Field extends JPanel implements MouseListener{
     public static enum FieldType { Mine, MineDanger, Empty, Flag, One, Two, Three, Four, Five, Six, Seven, Eight, Nine };
     protected ImageIcon initialFieldIcon;

@@ -3,9 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 
-/**
- * Created by Robi on 03/08/2017.
- */
 public class Settings extends JDialog{
     private static final int BACKGROUND_TARGET = 2;
     private static final int BUTTON_TARGET = 3;
